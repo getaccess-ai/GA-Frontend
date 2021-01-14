@@ -1,0 +1,25 @@
+const baseURL = 'https://z2o.herokuapp.com';
+const companyForm = document.getElementById('company-form');
+
+companyForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const data = new FormData(companyForm);
+    const companyBody = {
+        companyId: data.get('companyId'),
+        region: data.get('region'),
+        email: data.get('email'),
+        name: data.get('name'),
+        companyType: data.get('companyType'),
+        businessLine: data.get('businessLine'),
+        SIF: data.get('SIF')
+    };
+    axios.post(baseURL + '/bank/companies', companyBody)
+    .then(response => {
+        console.log(response.data);
+        document.location.href = 'bank_companies.html';
+    })
+    .catch(error => {
+        console.log(error);
+        alert(error.response.data.error || "Your request didn't validate");
+    })
+})

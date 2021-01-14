@@ -26,7 +26,6 @@ if(registrationForm) {
     registrationForm.addEventListener('submit', e => {
         e.preventDefault();
         const data = new FormData(registrationForm);
-        console.log(hexToRgb(data.get('primaryColor')));
         const registerBody = {
             bankId: data.get('bankId'),
             password: data.get('password'),
