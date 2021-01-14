@@ -32,7 +32,8 @@ const handleLoad = async (e) => {
     try{
         const resp = await axios.get('https://z2o.herokuapp.com/company/data');
         company = resp.data;
-        loadReports();
+        if(company.status !== 'connected') window.location.replace("company_connection.html");
+        else loadReports();
     }
     catch(error){
         Cookies.remove('company-auth');
