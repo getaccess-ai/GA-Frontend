@@ -19,5 +19,6 @@ const handleLoginSubmit = async (e) => {
 }
 
 if(Cookies.get('company-auth')) window.location.replace("company_reports.html");
+document.querySelector('div.form-wrapper').getElementsByClassName.visibility = "visible";
 const loginForm = document.getElementById('login-form');
 loginForm.onsubmit = handleLoginSubmit;
