@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank - Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <div class="form-wrapper">
+        <h1>Bank Registration</h1>
+    <form>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="bankName">Bank Name</label>
+              <input type="text" id="bankName" class="form-control" name="name" />
+              
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="bankEmail">Email ID</label>
+              <input type="email" id="bankEmail" class="form-control" name="email" />
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                  <label class="form-label" for="bankPrimaryColor">Primary Color</label>
+                <input type="color" id="bankPrimaryColor" class="form-control" name="primaryColor" />
+                
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                  <label class="form-label" for="bankSecondaryColor">Secondary Color</label>
+                <input type="color" id="bankSecondaryColor" class="form-control" name="secondaryColor" />
+                
+              </div>
+            </div>
+          </div>
+      
+        <!-- BankID input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bankId">Bank UserID</label>
+            <input type="text" id="bankId" class="form-control" name="bankId" />
+          </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bankPassword">Password</label>
+          <input type="password" id="bankPassword" class="form-control" name="password" />
+          
+        </div>
+
+        <!-- Image input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="bankCoverImage">Cover Image URL</label>
+          <input type="url" id="bankCoverImage" class="form-control" name="coverImg" />
+          
+        </div>
+      
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+
+        <!-- Login text -->
+        <div class="text-center">
+            <p>Already registered? <a href="bank_login.html">Login</a></p>
+          </div>
+      </form>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
