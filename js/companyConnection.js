@@ -30,6 +30,7 @@ async function handleLoad() {
         company = resp.data;
         if (company.status === 'connected')
             window.location.replace("company_reports.html");
+        else document.querySelector('div.container').style.visibility = 'visible';
     }
     catch (error) {
         Cookies.remove('company-auth');
