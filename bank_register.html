@@ -10,20 +10,20 @@
 <body>
     <div class="form-wrapper">
         <h1>Bank Registration</h1>
-    <form>
+    <form id="registration-form">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
                 <label class="form-label" for="bankName">Bank Name</label>
-              <input type="text" id="bankName" class="form-control" name="name" />
+              <input type="text" id="bankName" class="form-control" name="name" required="required" />
               
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
                 <label class="form-label" for="bankEmail">Email ID</label>
-              <input type="email" id="bankEmail" class="form-control" name="email" />
+              <input type="email" id="bankEmail" class="form-control" name="email" required="required" />
               
             </div>
           </div>
@@ -49,20 +49,20 @@
         <!-- BankID input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="bankId">Bank UserID</label>
-            <input type="text" id="bankId" class="form-control" name="bankId" />
+            <input type="text" id="bankId" class="form-control" name="bankId" required="required" />
           </div>
       
         <!-- Password input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="bankPassword">Password</label>
-          <input type="password" id="bankPassword" class="form-control" name="password" />
+          <input type="password" id="bankPassword" class="form-control" name="password" required="required" />
           
         </div>
 
         <!-- Image input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="bankCoverImage">Cover Image URL</label>
-          <input type="url" id="bankCoverImage" class="form-control" name="coverImg" />
+          <input type="url" id="bankCoverImage" class="form-control" name="coverImg" required="required" />
           
         </div>
       
@@ -76,5 +76,8 @@
       </form>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+      <script src="js/bank_forms.js"></script>
 </body>
 </html>

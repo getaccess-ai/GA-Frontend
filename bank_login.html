@@ -10,17 +10,17 @@
 <body>
     <div class="form-wrapper">
         <h1>Bank Login</h1>
-    <form>
+    <form id="login-form">
         <!-- BankID input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="bankId">Bank UserID</label>
-          <input type="text" id="bankId" class="form-control" name="bankId" />
+          <input type="text" id="bankId" class="form-control" name="bankId" required="required" />
         </div>
       
         <!-- Password input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="bankPassword">Password</label>
-          <input type="password" id="bankPassword" class="form-control" name="password" />
+          <input type="password" id="bankPassword" class="form-control" name="password" required="required" />
         </div>
       
       
@@ -34,5 +34,8 @@
       </form>
     </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+      <script src="js/bank_forms.js"></script>
 </body>
 </html>
