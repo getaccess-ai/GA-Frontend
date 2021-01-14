@@ -6,7 +6,7 @@ const loadReport = async () => {
 };
 
 const handleLoad = async (e) => {
-    if(!Cookies.get('company-auth')) window.location.replace("/company_login.html");
+    if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('reportName');
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');

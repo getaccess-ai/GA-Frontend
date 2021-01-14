@@ -16,7 +16,7 @@ const loadReports = async () => {
         for(let report of reports){
             const reportListItem = document.createElement('a');
             reportListItem.className = "list-group-item list-group-item-action";
-            reportListItem.href = `/company_report.html?reportName=${report.name}`;
+            reportListItem.href = `company_report.html?reportName=${report.name}`;
             reportListItem.innerText = report.name;
             reportList.appendChild(reportListItem); 
         }
@@ -27,7 +27,7 @@ const loadReports = async () => {
 }
 
 const handleLoad = async (e) => {
-    if(!Cookies.get('company-auth')) window.location.replace("/company_login.html");
+    if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try{
         const resp = await axios.get('https://z2o.herokuapp.com/company/data');
