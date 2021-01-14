@@ -35,6 +35,7 @@ const handleLoad = async (e) => {
         loadReports();
     }
     catch(error){
-        console.log(error);
+        Cookies.remove('company-auth');
+        window.location.replace("company_login.html");
     }
 };
