@@ -2,6 +2,12 @@ const baseURL = 'https://z2o.herokuapp.com';
 const loginForm = document.getElementById('login-form');
 const registrationForm = document.getElementById('registration-form');
 
+const authKey = Cookies.get('authKey');
+
+if(typeof authKey !== 'undefined') {
+    document.location.href = 'bank_dashboard.html';
+}
+
 const hexToRgb = (hex) => {
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, function(m, r, g, b) {
