@@ -11,7 +11,7 @@ const handleLoad = async (e) => {
     const name = urlParams.get('reportName');
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try{
-        const resp = await axios.get(`http://localhost:3000/company/data/reports/${name}`);
+        const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
         report = resp.data;
         loadReport();
     }
