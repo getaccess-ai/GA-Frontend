@@ -1,8 +1,8 @@
-const body = document.querySelector("body");
+const pre = document.querySelector("pre");
 let report;
 
 const loadReport = async () => {
-    body.innerText = JSON.stringify(report);
+    pre.innerText = JSON.stringify(report);
 };
 
 const handleLoad = async (e) => {
