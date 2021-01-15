@@ -8,6 +8,7 @@ const loadCompany = () => {
     .then(response => {
         const company = response.data;
         document.getElementById('company-name').innerText = company.name;
+        $(".content-loader").fadeOut('fast');
     })
     .catch(error => {
         console.log(error);

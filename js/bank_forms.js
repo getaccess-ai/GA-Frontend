@@ -8,6 +8,8 @@ if(typeof authKey !== 'undefined') {
     document.location.href = 'bank_dashboard.html';
 }
 
+$(".page-loader").fadeOut('fast');
+
 const hexToRgb = (hex) => {
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, function(m, r, g, b) {
@@ -25,6 +27,7 @@ const hexToRgb = (hex) => {
 if(registrationForm) {
     registrationForm.addEventListener('submit', e => {
         e.preventDefault();
+        $(".page-loader").fadeIn('fast');
         const data = new FormData(registrationForm);
         const registerBody = {
             bankId: data.get('bankId'),
@@ -42,6 +45,7 @@ if(registrationForm) {
         })
         .catch(error => {
             console.log(error);
+            $(".page-loader").fadeOut('fast');
             alert(error.response.data.error || "Your request didn't validate");
         })
     })
@@ -50,6 +54,7 @@ if(registrationForm) {
 if(loginForm) {
     loginForm.addEventListener('submit', e => {
         e.preventDefault();
+        $(".page-loader").fadeIn('fast');
         const data = new FormData(loginForm);
         const loginBody = {
             bankId: data.get('bankId'),
@@ -64,6 +69,7 @@ if(loginForm) {
         })
         .catch(error => {
             console.log(error);
+            $(".page-loader").fadeOut('fast');
             alert(error.response.data.error || "BankId or Password didn't validate");
         })
     })

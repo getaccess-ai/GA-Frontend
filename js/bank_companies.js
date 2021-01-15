@@ -13,6 +13,7 @@ const loadCompanies = () => {
             companyListItem.innerText = company.name;
             companiesList.appendChild(companyListItem); 
         });
+        $(".content-loader").fadeOut('fast');
     })
     .catch(error => {
         console.log(error);

@@ -3,6 +3,8 @@ const companyForm = document.getElementById('company-form');
 
 companyForm.addEventListener('submit', e => {
     e.preventDefault();
+    $(".page-loader").fadeIn('fast');
+    axios.defaults.headers.common['Authorization'] = Cookies.get('authKey');
     const data = new FormData(companyForm);
     const companyBody = {
         companyId: data.get('companyId'),
@@ -20,6 +22,7 @@ companyForm.addEventListener('submit', e => {
     })
     .catch(error => {
         console.log(error);
+        $(".page-loader").fadeOut('fast');
         alert(error.response.data.error || "Your request didn't validate");
     })
 })

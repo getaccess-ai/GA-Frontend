@@ -20,3 +20,5 @@ let nameElements = document.getElementsByClassName('bankName');
 for(let i=0; i<nameElements.length; i++) {
     nameElements[i].innerText = Cookies.get('name');
 }
+
+$(".page-loader").fadeOut('fast');

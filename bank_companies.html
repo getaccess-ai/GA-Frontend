@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="css/bank_companies.css">
 </head>
 <body>
+    <div class="page-loader">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->
@@ -38,6 +45,13 @@
           </nav>
     
           <div class="container-fluid dashboard-content">
+            <div class="content-loader">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+             </div>
             <h1>Companies</h1>
             <p>Companies linked with <span class="bankName">Bank</span></p>
             <div class="list-group list-group-flush" id="companies-list">
