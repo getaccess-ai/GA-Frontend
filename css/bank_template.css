@@ -47,9 +47,9 @@
 .content-loader {
   margin: -2em;
   position: fixed;
-  width:calc(100% - 15rem);
+  width: 100%;
   height: 90%;
-  z-index:1001;
+  z-index:999;
   background: white;
 }
 
@@ -65,5 +65,9 @@
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
+  }
+
+  .content-loader {
+    width: 85%;
   }
 }
