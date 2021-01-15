@@ -7,12 +7,12 @@ const clickHandler = async (e) => {
     e.preventDefault();
     const idx = reportSelector.value;
     if(idx===-1) return;
-    const report = reports[idx];
+    const name = reports[idx].name;
     const formData = new FormData(form);
-    const formDataObject = Object.fromEntries(formData.entries());
-    formDataObject.name = report.name;
+    const params = Object.fromEntries(formData.entries());
+    const req = {name, params};
     try{
-        const resp = await axios.post('https://z2o.herokuapp.com/company/data/reports', formDataObject);
+        const resp = await axios.post('https://z2o.herokuapp.com/company/data/reports', req);
         window.location.replace("company_reports.html");
     }
     catch(error){
