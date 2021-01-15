@@ -2,7 +2,8 @@ const pre = document.querySelector("pre");
 let report;
 
 const loadReport = async () => {
-    pre.innerText = JSON.stringify(report);
+    $('.table-responsive').append(buildTable(report.data));
+    $('span').text(report.name);
 };
 
 const handleLoad = async (e) => {
