@@ -1,13 +1,13 @@
 const baseURL = 'https://z2o.herokuapp.com';
 
-const reportsHTML = (reports) => {
+const reportsHTML = (company, reports) => {
     const reportsList = document.createElement('div');
     reportsList.className = "list-group list-group-flush";
     reports.forEach((report) => {
         const date = new Date(report.lastPublishDate);
         const reportListItem = document.createElement('a');
         reportListItem.className = "list-group-item list-group-item-action";
-        reportListItem.href = `bank_company_report.html?reportName=${report.name}`;
+        reportListItem.href = `bank_company_report.html?companyId=${company.companyId}&companyName=${company.name}&reportName=${report.name}`;
         reportListItem.innerHTML = `<div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1">${report.name}</h5>
                                         <small>${date.toDateString()}</small>
@@ -18,7 +18,7 @@ const reportsHTML = (reports) => {
     return reportsList.innerHTML;
 }
 
-const companyReportsHTML = (reports) => {
+const companyReportsHTML = (company, reports) => {
     if (reports.totalResults === 0) {
         return `
             <ul class="list-group list-group-flush">
@@ -26,7 +26,7 @@ const companyReportsHTML = (reports) => {
             </ul>
         `;
     }
-    return reportsHTML(reports.reports);
+    return reportsHTML(company, reports.reports);
 }
 
 const detailsHTML = (company) => {
@@ -110,7 +110,7 @@ const companyHTML = (company, settings, reports) => {
                 <div class="col-sm">
                 <h2>Reports <span class="badge bg-primary rounded-pill">${reports.totalResults}</span></h2>
                 <div class="w-100 separator mt-2 shadow-sm"></div>
-                    ${companyReportsHTML(reports)}
+                    ${companyReportsHTML(company, reports)}
                 </div>
             </div>
         </div>
