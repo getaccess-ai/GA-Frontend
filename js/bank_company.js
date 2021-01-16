@@ -1,5 +1,34 @@
 const baseURL = 'https://z2o.herokuapp.com';
 
+const reportsHTML = (reports) => {
+    const reportsList = document.createElement('div');
+    reportsList.className = "list-group list-group-flush";
+    reports.forEach((report) => {
+        const date = new Date(report.lastPublishDate);
+        const reportListItem = document.createElement('a');
+        reportListItem.className = "list-group-item list-group-item-action";
+        reportListItem.href = `bank_company_report.html?reportName=${report.name}`;
+        reportListItem.innerHTML = `<div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">${report.name}</h5>
+                                        <small>${date.toDateString()}</small>
+                                    </div>
+                                    <small>Submitted By: ${report.lastUpdateMadeBy}</small>`;
+        reportsList.appendChild(reportListItem);
+    })
+    return reportsList.innerHTML;
+}
+
+const companyReportsHTML = (reports) => {
+    if (reports.totalResults === 0) {
+        return `
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>This company hasn't submitted any reports yet.</b></li>
+            </ul>
+        `;
+    }
+    return reportsHTML(reports.reports);
+}
+
 const detailsHTML = (company) => {
     const date = new Date(company.createdAt);
     return `
@@ -39,7 +68,7 @@ const settingsHTML = (settings) => {
     `
 }
 
-const companyHTML = (company, settings) => {
+const companyHTML = (company, settings, reports) => {
     return `
             <div class="d-flex w-100 justify-content-between">
             <h1>${company.name} &nbsp; <span class="badge bg-primary rounded-pill">${company.status.charAt(0).toUpperCase() + company.status.slice(1)}</span></h1>
@@ -79,8 +108,9 @@ const companyHTML = (company, settings) => {
         <div class="container mt-4">
             <div class="row">
                 <div class="col-sm">
-                <h2>Reports</h2>
+                <h2>Reports <span class="badge bg-primary rounded-pill">${reports.totalResults}</span></h2>
                 <div class="w-100 separator mt-2 shadow-sm"></div>
+                    ${companyReportsHTML(reports)}
                 </div>
             </div>
         </div>
@@ -92,13 +122,21 @@ const loadCompany = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const companyId = urlParams.get('companyId');
     axios.get(baseURL + '/bank/companies/' + companyId)
-        .then(response => {
-            const company = response.data;
+        .then(responseCompany => {
+            const company = responseCompany.data;
             axios.get(baseURL + '/bank/companies/' + company.companyId + '/settings')
-                .then(response => {
-                    const settings = response.data;
-                    document.getElementById('company').innerHTML = companyHTML(company, settings);
-                    $(".content-loader").fadeOut('fast');
+                .then(responseSettings => {
+                    const settings = responseSettings.data;
+                    axios.get(baseURL + '/bank/companies/' + company.companyId + '/data/reports')
+                        .then(responseReports => {
+                            const reports = responseReports.data;
+                            document.getElementById('company').innerHTML = companyHTML(company, settings, reports);
+                            $(".content-loader").fadeOut('fast');
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            document.location.href = 'bank_companies.html';
+                        })
                 })
                 .catch(error => {
                     console.log(error);
