@@ -2,14 +2,7 @@ const body = document.querySelector("body");
 let company;
 
 const loadReports = async () => {
-    body.innerHTML = `
-    <div class="container">
-        <h3> ${company.name} Reports </h3>
-        <br />
-        <ul class="list-group" id="report-list"> 
-        </ul>
-    </div>
-    `;
+    document.querySelector('h3').innerText = `${company.name} Reports`
     try{
         const reports = company.reports;
         const reportList = document.getElementById('report-list'); 

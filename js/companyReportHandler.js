@@ -1,8 +1,12 @@
 const pre = document.querySelector("pre");
 let report;
 
+function annotationHandler(id){
+    console.log(id);
+}
+
 const loadReport = async () => {
-    $('.table-responsive').append(buildTable(report.data));
+    $('.table-responsive').append(buildTable(report.data, annotationHandler));
     $('span').text(report.name);
 };
 

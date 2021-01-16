@@ -1,5 +1,8 @@
-function buildTable(data, curId, headers)
+function buildTable(data, clickFunc, curId, headers)
 {
+    if(!clickFunc){
+        clickFunc = (id) => console.log(id);
+    }
     if(curId && curId !== '') curId += '.';
     else curId = '';
     if(!Array.isArray(data) && typeof data === "object"){
@@ -12,10 +15,10 @@ function buildTable(data, curId, headers)
         const row = document.createElement('tr');
         headers.forEach(header => {
             const cell = document.createElement('td');
-            const element = buildTable(data[header], curId+header);
+            const element = buildTable(data[header], clickFunc, curId+header);
             cell.appendChild(element);
             if(element.nodeName === 'P'){
-                cell.onclick = () => console.log(curId+header);
+                cell.onclick = ()=>clickFunc(curId+header);
                 cell.style.cursor = "pointer";
             }
             row.appendChild(cell);
@@ -38,7 +41,7 @@ function buildTable(data, curId, headers)
     table.appendChild(getHeadersHtml(headersCur));
     const tbody = document.createElement('tbody');
     data.forEach((element, idx) => {
-        const rowReturned = buildTable(element, curId+idx.toString(), headersCur);
+        const rowReturned = buildTable(element, clickFunc, curId+idx.toString(), headersCur);
         const row = document.createElement('tr');
         if(rowReturned.nodeName !== 'TR'){
             row.appendChild(rowReturned);
