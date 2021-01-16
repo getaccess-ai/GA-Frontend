@@ -17,25 +17,45 @@
 </head>
 <body onload="handleLoad()">
     <nav class="navbar navbar-light bg-light">
-        <div class="container"><span class="navbar-brand mb-0 h1">Report Loading...</span></div>
+        <div class="container"><span class="navbar-brand mb-0 h1">Report Loading...</span>
+            <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#pushModal">Approve</button></div>
     </nav>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="annotationModal" tabindex="-1" aria-labelledby="annotationModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 id="annotation-title" class="modal-title" id="exampleModalLabel">Adjust value</h5>
+                <h5 id="annotation-title" class="modal-title" id="annotationModalLabel">Adjust value</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div>
-                    <input placeholder="Adjustment" class="form-control" type="number" step="0.01" name="adjustment" id="adjustment">
+                    <input placeholder="Adjustment" class="form-control" type="number" step="0.01" name="adjustment" id="adjustment" required>
                     <br>
-                    <input placeholder="Comment" class="form-control" type="text" name="comment" id="comment" autocomplete="off">
+                    <input placeholder="Comment" class="form-control" type="text" name="comment" id="comment" autocomplete="off" required>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" id="save-annot" onclick="saveAnnotation()" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pushModal" tabindex="-1" aria-labelledby="pushModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="annotation-title" class="modal-title" id="pushModalLabel">Approve and Push</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="pushModalBody">
+                <div>
+                    <input placeholder="Your Name" class="form-control" type="text" name="person" id="person" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="approve-push" onclick="approveAndPush()" class="btn btn-outline-danger">Approve and Push</button>
             </div>
             </div>
         </div>

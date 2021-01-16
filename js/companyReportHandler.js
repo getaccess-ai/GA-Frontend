@@ -2,25 +2,47 @@ const pre = document.querySelector("pre");
 let report;
 let annotations = {};
 let curAnnotation;
-const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+const myModal = new bootstrap.Modal(document.getElementById('annotationModal'));
+const pushModal = new bootstrap.Modal(document.getElementById('pushModal'));
 
 function annotationHandler(id){
     curAnnotation = id;
     if(annotations[id]){
-        $('#adjustment').text = annotations[id].adjustment;
-        $('#comment').text = annotations[id].comment;
+        document.querySelector('#adjustment').value = annotations[id].adjustment;
+        document.querySelector('#comment').value = annotations[id].comment;
+    }
+    else{
+        document.querySelector('#adjustment').value = "";
+        document.querySelector('#comment').value = "";
     }
     myModal.show();
 }
 
 function saveAnnotation(){
     annotations[curAnnotation] = {
-        adjustment: $('#adjustment').text,
-        comment: $('#comment').text
+        adjustment: parseFloat(document.querySelector('#adjustment').value),
+        comment: document.querySelector('#comment').value
     }
-    $('#adjustment').text = "";
-    $('#comment').text = "";
+    document.getElementById(curAnnotation).className = 'table-active';
     myModal.hide();
+}
+
+async function approveAndPush(){
+    const body = {
+        person: document.querySelector('#person').value,
+        annotations: annotations
+    }
+    console.log(body);
+    try{
+        const resp = await axios.post(`https://z2o.herokuapp.com/company/data/reports/${report.name}`, body);
+        pushModal.hide();
+        alert('Success');
+    }
+    catch(error){
+        console.log(error.response.data);
+        pushModal.hide();
+        alert(error.response.data);
+    }
 }
 
 const loadReport = async () => {
@@ -36,7 +58,6 @@ const handleLoad = async (e) => {
     try{
         const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
         report = resp.data;
-        console.log(report);
         loadReport();
     }
     catch(error){
