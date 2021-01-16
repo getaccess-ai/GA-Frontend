@@ -14,6 +14,7 @@ const handleLoad = async (e) => {
     try{
         const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
         report = resp.data;
+        console.log(report);
         loadReport();
     }
     catch(error){
