@@ -53,6 +53,15 @@
   background: white;
 }
 
+.separator {
+  height: 1px;
+  background-color: black;
+}
+
+.annotated {
+  background: #ffff6d!important;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
