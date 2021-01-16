@@ -1,10 +1,11 @@
 function buildTable(data, clickFunc, curId, headers)
 {
-    if(!clickFunc){
-        clickFunc = (id) => console.log(id);
-    }
+    // If the params are not supplied
+    if(!clickFunc) clickFunc = (id) => console.log(id);
     if(curId && curId !== '') curId += '.';
     else curId = '';
+
+    // If the data is a js object
     if(!Array.isArray(data) && typeof data === "object"){
         let table;
         if(!headers){
@@ -19,6 +20,7 @@ function buildTable(data, clickFunc, curId, headers)
             cell.appendChild(element);
             if(element.nodeName === 'P'){
                 cell.onclick = ()=>clickFunc(curId+header);
+                cell.id = curId+header;
                 cell.style.cursor = "pointer";
             }
             row.appendChild(cell);
@@ -31,11 +33,15 @@ function buildTable(data, clickFunc, curId, headers)
         }
         return row;
     }
+
+    // If its a terminal element like a number or string
     if(!Array.isArray(data)){
         const cell = document.createElement('p');
         cell.innerText = data? data.toString(): "";
         return cell;
     }
+
+    // If it is a table
     const table = getTable();
     const headersCur = getHeaders(data);
     table.appendChild(getHeadersHtml(headersCur));

@@ -1,8 +1,26 @@
 const pre = document.querySelector("pre");
 let report;
+let annotations = {};
+let curAnnotation;
+const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
 
 function annotationHandler(id){
-    console.log(id);
+    curAnnotation = id;
+    if(annotations[id]){
+        $('#adjustment').text = annotations[id].adjustment;
+        $('#comment').text = annotations[id].comment;
+    }
+    myModal.show();
+}
+
+function saveAnnotation(){
+    annotations[curAnnotation] = {
+        adjustment: $('#adjustment').text,
+        comment: $('#comment').text
+    }
+    $('#adjustment').text = "";
+    $('#comment').text = "";
+    myModal.hide();
 }
 
 const loadReport = async () => {
