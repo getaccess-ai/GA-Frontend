@@ -16,7 +16,7 @@ const detailsHTML = (company) => {
 }
 
 const connectionHTML = (company) => {
-    if(!company.dataConnection) {
+    if (!company.dataConnection) {
         return `
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>This company hasn't connected an accounting software yet.</b></li>
@@ -30,7 +30,16 @@ const connectionHTML = (company) => {
     `
 }
 
-const companyHTML = (company) => {
+const settingsHTML = (settings) => {
+    return `
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Update Period:</b> ${settings.updatePeriod}</li>
+            <li class="list-group-item"><b>Allowed to Change Connection:</b> ${settings.allowedToChangeConnection}</li>
+        </ul>
+    `
+}
+
+const companyHTML = (company, settings) => {
     return `
             <div class="d-flex w-100 justify-content-between">
             <h1>${company.name} &nbsp; <span class="badge bg-primary rounded-pill">${company.status.charAt(0).toUpperCase() + company.status.slice(1)}</span></h1>
@@ -39,7 +48,7 @@ const companyHTML = (company) => {
                 <a class="btn btn-secondary" href="bank_edit_company_settings?companyId=${company.companyId}" role="button">Edit Settings</a>
                 <a class="btn btn-danger" role="button">Delete</a>
             </div>
-        </div>
+            </div>
         <div class="w-100 separator mt-2 shadow"></div>
         <div class="container mt-4">
             <div class="row">
@@ -60,10 +69,19 @@ const companyHTML = (company) => {
                     <div class="col-sm">
                         <h2>Settings</h2>
                         <div class="w-100 separator mt-2 shadow-sm"></div>
+                        ${settingsHTML(settings)}
                     </div>
                 </div>
             </div>
             
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-sm">
+                <h2>Reports</h2>
+                <div class="w-100 separator mt-2 shadow-sm"></div>
+                </div>
             </div>
         </div>
     `;
@@ -74,15 +92,23 @@ const loadCompany = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const companyId = urlParams.get('companyId');
     axios.get(baseURL + '/bank/companies/' + companyId)
-    .then(response => {
-        const company = response.data;
-        document.getElementById('company').innerHTML = companyHTML(company);
-        $(".content-loader").fadeOut('fast');
-    })
-    .catch(error => {
-        console.log(error);
-        document.location.href = 'bank_companies.html';
-    })
+        .then(response => {
+            const company = response.data;
+            axios.get(baseURL + '/bank/companies/' + company.companyId + '/settings')
+                .then(response => {
+                    const settings = response.data;
+                    document.getElementById('company').innerHTML = companyHTML(company, settings);
+                    $(".content-loader").fadeOut('fast');
+                })
+                .catch(error => {
+                    console.log(error);
+                    document.location.href = 'bank_companies.html';
+                })
+        })
+        .catch(error => {
+            console.log(error);
+            document.location.href = 'bank_companies.html';
+        })
 }
 
 loadCompany();
