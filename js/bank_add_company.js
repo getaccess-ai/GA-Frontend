@@ -17,7 +17,6 @@ companyForm.addEventListener('submit', e => {
     };
     axios.post(baseURL + '/bank/companies', companyBody)
     .then(response => {
-        console.log(response.data);
         document.location.href = 'bank_companies.html';
     })
     .catch(error => {
