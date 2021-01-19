@@ -58,6 +58,7 @@ function saveAnnotation(){
 }
 
 async function approveAndPush(){
+    pushModal.hide();
     document.querySelector('.page-loader').style.visibility = 'visible';
     const body = {
         person: document.querySelector('#person').value,
@@ -66,7 +67,6 @@ async function approveAndPush(){
     console.log(body);
     try{
         const resp = await axios.post(`https://z2o.herokuapp.com/company/data/reports/${report.name}`, body);
-        pushModal.hide();
         document.querySelector('.page-loader').style.visibility = 'hidden';
         pushSuccessModal('The report has been pushed. Press ok to go to the report listing. Press close to continue editing');
     }
