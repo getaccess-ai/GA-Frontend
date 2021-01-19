@@ -11,6 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" defer></script>
 </head>
 <body>
+  <div class="page-loader" style="visibility: hidden;">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+ </div>
     <div class="form-wrapper">
         <h1>Company Login</h1>
     <form id="login-form">

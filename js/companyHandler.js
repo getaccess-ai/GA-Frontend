@@ -1,5 +1,6 @@
 const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    document.querySelector('.page-loader').style.visibility = 'visible';
     const form = e.target;
     const companyId = document.getElementById('companyId');
     const password = document.getElementById('password');
@@ -12,6 +13,7 @@ const handleLoginSubmit = async (e) => {
         window.location.replace("company_reports.html");
     }
     catch(error){
+        document.querySelector('.page-loader').style.visibility = 'hidden';
         const status = error.response.status;
         const wrongElement = status === 404? companyId: password;
         wrongElement.className += ' is-invalid';

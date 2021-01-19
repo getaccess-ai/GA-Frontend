@@ -1,23 +1,46 @@
 const body = document.querySelector("body");
 const reportSelector = document.getElementById("report-name");
 const form = document.getElementById("add-form");
+const failureModal = new bootstrap.Modal(document.getElementById('failureModal'));
 let reports;
+
+function pushFailureModal(msg, err){
+    failureBody.innerText = msg;
+    console.log(err);
+    failureModal.show();
+}
 
 const clickHandler = async (e) => {
     e.preventDefault();
+    document.querySelector('.page-loader').style.visibility = 'visible';
     const idx = reportSelector.value;
     if(idx===-1) return;
     const name = reports[idx].name;
     const formData = new FormData(form);
     const params = Object.fromEntries(formData.entries());
+    let emptyValue = false;
+    const missingParams = [];
+    Object.keys(params).forEach(paramKey =>{
+        if(params[paramKey]===""){
+            missingParams.push(paramKey);
+            emptyValue = true;
+        }
+    });
+    if(emptyValue){
+        document.querySelector('.page-loader').style.visibility = 'hidden';
+        pushFailureModal(`${missingParams.join(', ')} parmas not specified`);
+        return;
+    }
     const req = {name, params};
     try{
         const resp = await axios.post('https://z2o.herokuapp.com/company/data/reports', req);
         window.location.replace("company_reports.html");
     }
     catch(error){
+        document.querySelector('.page-loader').style.visibility = 'hidden';
         const status = error.response.status;
         console.log(error.response.data);
+        pushFailureModal(error.response.data);
     }
 }
 
@@ -32,6 +55,7 @@ const changeHandler = async (e) => {
         input.className = "form-control";
         input.placeholder = `Enter ${param}`;
         input.name = param;
+        input.required = true;
         input.id = param;
         form.appendChild(input);
     });
@@ -40,6 +64,7 @@ const changeHandler = async (e) => {
     const button = document.createElement('button');
     button.id = 'submit';
     button.innerText = "Add Report";
+    button.type = 'submit'
     button.addEventListener('click', clickHandler);
     button.className = "btn btn-primary";
     form.appendChild(button);

@@ -39,9 +39,11 @@ function pushFailureModal(msg, err){
 
 async function handleDelete(){
     try {
+        document.querySelector('.page-loader').style.visibility = 'visible';
         const resp = await axios.delete(`https://z2o.herokuapp.com/company/data/reports/${name}`);
         pushSuccessModal('This report has been deleted. Press ok to go to report listing.', true);
     } catch (error) {
+        document.querySelector('.page-loader').style.visibility = 'hidden';
         pushFailureModal('There was a problem in parsing your request. Please try again.', error);
     }
 }
@@ -56,6 +58,7 @@ function saveAnnotation(){
 }
 
 async function approveAndPush(){
+    document.querySelector('.page-loader').style.visibility = 'visible';
     const body = {
         person: document.querySelector('#person').value,
         annotations: annotations
@@ -64,9 +67,11 @@ async function approveAndPush(){
     try{
         const resp = await axios.post(`https://z2o.herokuapp.com/company/data/reports/${report.name}`, body);
         pushModal.hide();
+        document.querySelector('.page-loader').style.visibility = 'hidden';
         pushSuccessModal('The report has been pushed. Press ok to go to the report listing. Press close to continue editing');
     }
     catch(error){
+        document.querySelector('.page-loader').style.visibility = 'hidden';
         console.log(error.response.data);
         pushModal.hide();
         pushFailureModal('There was a problem in parsing your request. Please try again.');
@@ -76,9 +81,11 @@ async function approveAndPush(){
 const loadReport = async () => {
     $('.table-responsive').append(buildTable(report.data, annotationHandler));
     $('span').text(report.name);
+    document.querySelector('.page-loader').style.visibility = 'hidden';
 };
 
 const handleLoad = async (e) => {
+    document.querySelector('.page-loader').style.visibility = 'visible';
     if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
     const urlParams = new URLSearchParams(window.location.search);
     name = urlParams.get('reportName');
@@ -89,6 +96,9 @@ const handleLoad = async (e) => {
         loadReport();
     }
     catch(error){
-        console.log(error.response.data);
+        console.log(error.response.data.error);
+        document.querySelector('.page-loader').style.visibility = 'hidden';
+        const msg = error.response? error.response.data.error.message: "Something went wrong";
+        pushFailureModal(msg);
     }
 };
