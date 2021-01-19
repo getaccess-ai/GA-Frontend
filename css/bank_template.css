@@ -32,6 +32,10 @@
   padding: 2em;
 }
 
+.company-content {
+  padding: 4em!important;
+}
+
 .collapseList a {
   color: white!important;
 }

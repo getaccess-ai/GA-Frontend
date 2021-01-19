@@ -28,7 +28,7 @@ const clickHandler = async (e) => {
     });
     if(emptyValue){
         document.querySelector('.page-loader').style.visibility = 'hidden';
-        pushFailureModal(`${missingParams.join(', ')} parmas not specified`);
+        pushFailureModal(`${missingParams.join(', ')} params not specified`);
         return;
     }
     const req = {name, params};

@@ -2,7 +2,7 @@ const body = document.querySelector("body");
 let company;
 
 const loadReports = async () => {
-    document.querySelector('h3').innerText = `${company.name} Reports`
+    document.querySelector('h3').innerText = `Reports added by ${company.name}`
     try{
         const reports = company.reports;
         const reportList = document.getElementById('report-list'); 
