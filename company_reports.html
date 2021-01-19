@@ -11,6 +11,9 @@
     <script src="js/companyReportsHandler.js" defer></script>
 </head>
 <body onload="handleLoad()">
+    <nav class="navbar navbar-light bg-light">
+            <div class="container"><button style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg);-o-transform: rotate(-90deg);" class="btn btn-outline-danger" onclick="Cookies.remove('company-auth'); window.location.replace('company_login.html')">Logout</button></div>
+    </nav>
     <div class="container">
         <h3> Loading Reports... </h3>
         <br />
