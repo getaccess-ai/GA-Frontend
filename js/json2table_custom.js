@@ -9,9 +9,31 @@ function buildTable(data, clickFunc, curId, headers)
     if(!Array.isArray(data) && typeof data === "object"){
         let table;
         if(!headers){
-            headers = getHeaders([data]);
             table = getTable();
-            table.appendChild(getHeadersHtml(headers));
+            const tbody = document.createElement('tbody');
+            Object.keys(data).forEach(key=>{
+                const row = document.createElement('tr');
+
+                const cellHead = document.createElement('th');
+                const elementHead = buildTable(key, clickFunc, curId+key+'head');
+                cellHead.className = 'table-light';
+                cellHead.appendChild(elementHead);
+                row.appendChild(cellHead);
+                
+                const cell = document.createElement('td');
+                const element = buildTable(data[key], clickFunc, curId+key);
+                cell.appendChild(element);
+                if(element.nodeName === 'P'){
+                    cell.onclick = ()=>clickFunc(curId+key);
+                    cell.id = curId+key;
+                    cell.style.cursor = "pointer";
+                }
+                row.appendChild(cell);
+
+                tbody.appendChild(row);
+            })
+            table.appendChild(tbody);
+            return table;
         }
         const row = document.createElement('tr');
         headers.forEach(header => {
@@ -25,12 +47,6 @@ function buildTable(data, clickFunc, curId, headers)
             }
             row.appendChild(cell);
         });
-        if(table){
-            const tbody = document.createElement('tbody');
-            tbody.append(row);
-            table.appendChild(tbody);
-            return table;
-        }
         return row;
     }
 
