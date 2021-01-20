@@ -98,7 +98,7 @@ const handleLoad = async (e) => {
     catch(error){
         console.log(error.response.data.error);
         document.querySelector('.page-loader').style.visibility = 'hidden';
-        const msg = error.response? error.response.data.error.message: "Something went wrong";
+        const msg = error.response? error.response.data.error: "Something went wrong";
         pushFailureModal(msg);
     }
 };
