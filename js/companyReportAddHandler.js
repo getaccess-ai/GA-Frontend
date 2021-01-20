@@ -17,13 +17,17 @@ const clickHandler = async (e) => {
     if(idx===-1) return;
     const name = reports[idx].name;
     const formData = new FormData(form);
-    const params = Object.fromEntries(formData.entries());
+    const allParams = Object.fromEntries(formData.entries());
+    const params = {};
     let emptyValue = false;
     const missingParams = [];
-    Object.keys(params).forEach(paramKey =>{
-        if(params[paramKey]===""){
-            missingParams.push(paramKey);
-            emptyValue = true;
+    Object.keys(allParams).forEach(paramKey =>{
+        if(!paramKey.startsWith('~__')){
+            if(allParams[paramKey]===""){
+                missingParams.push(paramKey);
+                emptyValue = true;
+            }
+            params[paramKey] = allParams[paramKey];
         }
     });
     if(emptyValue){
@@ -34,14 +38,29 @@ const clickHandler = async (e) => {
     const req = {name, params};
     try{
         const resp = await axios.post('https://z2o.herokuapp.com/company/data/reports', req);
+        Object.keys(params).forEach(paramKey =>{
+            if(allParams[`~__${paramKey}`]) localStorage.setItem(paramKey, params[paramKey]);
+        });
         window.location.replace("company_reports.html");
     }
     catch(error){
         document.querySelector('.page-loader').style.visibility = 'hidden';
         const status = error.response.status;
         console.log(error.response.data);
-        pushFailureModal(error.response.data);
+        pushFailureModal(error.response.data.error);
     }
+}
+
+const getGroup = (param) => {
+    const outerDiv = document.createElement('div');
+    outerDiv.className = 'input-group mb-3';
+    const innerDiv = document.createElement('div');
+    innerDiv.className = 'input-group-text';
+    innerDiv.innerHTML = `
+        <label class="me-2">Default </label>
+        <input class="form-check-input" name="~__${param}" type="checkbox" value="Default" aria-label="Checkbox for following text input">`
+    outerDiv.appendChild(innerDiv);
+    return outerDiv;
 }
 
 const changeHandler = async (e) => {
@@ -50,14 +69,19 @@ const changeHandler = async (e) => {
     if(idx===-1) return;
     const report = reports[idx];
     report.requiredParams.forEach((param) => {
+        const group = getGroup(param);
         const input = document.createElement('input');
         input.type = "text";
         input.className = "form-control";
         input.placeholder = `Enter ${param}`;
+        input.autocomplete = 'off';
+        const prevValue = localStorage.getItem(param);
+        if(prevValue) input.value = prevValue;
         input.name = param;
         input.required = true;
         input.id = param;
-        form.appendChild(input);
+        group.appendChild(input);
+        form.appendChild(group);
     });
     const lineBreak = document.createElement('br');
     form.appendChild(lineBreak);
