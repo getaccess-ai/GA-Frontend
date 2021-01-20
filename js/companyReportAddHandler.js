@@ -57,7 +57,7 @@ const getGroup = (param) => {
     const innerDiv = document.createElement('div');
     innerDiv.className = 'input-group-text';
     innerDiv.innerHTML = `
-        <label class="me-2">Default </label>
+        <label class="me-2">${param}: Default </label>
         <input class="form-check-input" name="~__${param}" type="checkbox" value="Default" aria-label="Checkbox for following text input">`
     outerDiv.appendChild(innerDiv);
     return outerDiv;
@@ -71,7 +71,8 @@ const changeHandler = async (e) => {
     report.requiredParams.forEach((param) => {
         const group = getGroup(param);
         const input = document.createElement('input');
-        input.type = "text";
+        if(param.includes("date"))  input.type = "date";
+        else input.type = "text";
         input.className = "form-control";
         input.placeholder = `Enter ${param}`;
         input.autocomplete = 'off';
