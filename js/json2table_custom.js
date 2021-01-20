@@ -53,7 +53,12 @@ function buildTable(data, clickFunc, curId, headers)
     // If its a terminal element like a number or string
     if(!Array.isArray(data)){
         const cell = document.createElement('p');
-        cell.innerText = data? data.toString(): "";
+        try{
+            cell.innerText = data.toString();
+        }
+        catch(e){
+            cell.innerHTML = "";
+        }
         return cell;
     }
 
