@@ -97,12 +97,23 @@ const changeHandler = async (e) => {
 
 const loadReports = async () => {
     reportSelector.innerHTML = "";
+    let optgroupmap = {};
     reports.forEach((report, reportIdx) => {
         const option = document.createElement("option");
         option.value = reportIdx;
-        option.innerText = report.name;
-        reportSelector.appendChild(option);
+        option.innerText = report.name.split('.')[report.name.split('.').length - 1];
+        if(report.category in optgroupmap) {
+            optgroupmap[report.category].appendChild(option);
+        } else {
+            const optgroup = document.createElement("optgroup");
+            optgroup.label = report.category;
+            optgroupmap[report.category] = optgroup;
+            optgroupmap[report.category].appendChild(option);
+        }
     });
+    for(const optgroup in optgroupmap) {
+        reportSelector.appendChild(optgroupmap[optgroup]);
+    }
     const option = document.createElement("option");
     option.value = -1;
     option.innerText = "Select a report from the list";
