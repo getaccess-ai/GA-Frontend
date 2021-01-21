@@ -1,3 +1,23 @@
+.navbar {
+  background: #8ebfe7!important;
+}
+
+.navbar.bg-light {
+  background: #8ebfe7!important;
+}
+
+#sidebar-wrapper {
+  background: #8ebfe7!important;
+}
+
+#sidebar-wrapper .bg-light {
+  background: #8ebfe7!important;
+}
+
+#sidebar-wrapper .bg-dark {
+  background: #037fb1!important;
+}
+
 #wrapper {
     overflow-x: hidden;
  }
