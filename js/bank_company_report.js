@@ -5,10 +5,15 @@ const loadReport = (report, companyName) => {
     const date = new Date(report.pushDate);
     document.querySelector('.table-responsive').innerHTML = "";
     $('.table-responsive').append(buildTable(report.approvedData.data));
-    $('#report-name').text(report.name);
+    $('#report-name').text(report.reportName);
     $('#company-name').text(companyName);
     $('#publish-date').text(date.toDateString());
     $('#update-name').text(report.pushedBy);
+    console.log(report);
+    if(report.reportName.includes('StockStatement')) {
+        if(report.approvedData.data.Title) $('#report-title').text(report.approvedData.data.Title);
+        else $('#report-title').text(`Stock Statement for ${report.approvedData.data.Period}: ${companyName}`);
+    }
     const annotations = report.approvedData.annotations;
     for(const cell in annotations) {
         const cellElement = document.getElementById(cell);
