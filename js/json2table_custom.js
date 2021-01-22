@@ -2,7 +2,7 @@ function buildTable(data, clickFunc, curId, headers)
 {
     // If the params are not supplied
     if(!clickFunc) clickFunc = (id) => console.log(id);
-    if(curId && curId !== '') curId += '.';
+    if(curId && curId !== '') curId += '||';
     else curId = '';
 
     // If the data is a js object
