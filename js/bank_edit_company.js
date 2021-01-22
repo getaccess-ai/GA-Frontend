@@ -12,7 +12,7 @@ const loadCompany = () => {
             $("#companyEmail").val(company.email);
             $("#companyType").val(company.companyType);
             $("#companyRegion").val(company.region);
-            $("#companySIF").val(company.SIF);
+            $("#companyCIF").val(company.CIF);
             $("#companyBusinessLine").val(company.businessLine);
             $("#companyId").val(company.companyId);
             companyForm.addEventListener('submit', e => {
@@ -27,7 +27,7 @@ const loadCompany = () => {
                     name: data.get('name'),
                     companyType: data.get('companyType'),
                     businessLine: data.get('businessLine'),
-                    SIF: data.get('SIF')
+                    CIF: data.get('CIF')
                 };
                 console.log(companyBody);
                 axios.put(baseURL + '/bank/companies/' + companyId, companyBody)

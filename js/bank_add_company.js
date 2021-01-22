@@ -13,7 +13,7 @@ companyForm.addEventListener('submit', e => {
         name: data.get('name'),
         companyType: data.get('companyType'),
         businessLine: data.get('businessLine'),
-        SIF: data.get('SIF')
+        CIF: data.get('CIF')
     };
     axios.post(baseURL + '/bank/companies', companyBody)
     .then(response => {

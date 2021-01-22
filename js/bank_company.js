@@ -37,7 +37,7 @@ const detailsHTML = (company) => {
         <li class="list-group-item"><b>Email:</b> ${company.email}</li>
         <li class="list-group-item"><b>Type:</b> ${company.companyType}</li>
         <li class="list-group-item"><b>Region:</b> ${company.region}</li>
-        <li class="list-group-item"><b>SIF:</b> ${company.SIF}</li>
+        <li class="list-group-item"><b>CIF:</b> ${company.CIF}</li>
         <li class="list-group-item"><b>Business Line:</b> ${company.businessLine}</li>
         <li class="list-group-item"><b>Created:</b> ${date.toDateString()}</li>
     </ul>
