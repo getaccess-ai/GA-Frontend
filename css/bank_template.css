@@ -88,6 +88,10 @@ body {
   background: #ffff6d!important;
 }
 
+td td {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
