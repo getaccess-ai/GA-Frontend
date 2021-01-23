@@ -6,6 +6,28 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.navbar.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    padding: 0.6em;
+}
+
+.footer .container {
+    text-align: center;
+}
+
+.footer p {
+    margin: 0!important;
+}
+
 h1 {
     margin: 1em;
     text-align: center;
