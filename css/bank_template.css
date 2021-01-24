@@ -93,6 +93,10 @@ td td {
   text-align: center;
 }
 
+#report-list p {
+  margin: 0!important;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
