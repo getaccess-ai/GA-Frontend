@@ -16,6 +16,12 @@ const loadCompanies = () => {
     axios.get(baseURL + '/bank/companies')
     .then(response => {
         console.log(response.data);
+        if(response.data.results.length===0) {
+            const noCompanies = document.createElement('p');
+            noCompanies.innerText = "You haven't added any customers yet.";
+            noCompanies.className = "text-muted";
+            companiesList.appendChild(noCompanies); 
+        }
         response.data.results.forEach(company => {
             const companyListItem = document.createElement('a');
             companyListItem.className = "list-group-item list-group-item-action";
