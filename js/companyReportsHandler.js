@@ -18,22 +18,30 @@ const loadReports = async () => {
         const reports = company.reports;
         const reportList = document.getElementById('report-list'); 
         for(let report of reports){
-            const itemRow = document.createElement('div');
-            itemRow.className = 'row d-flex';
-
-            const contentColumn = document.createElement('div');
-            contentColumn.className = "col col-11";
-
             const reportListItem = document.createElement('a');
             reportListItem.className = "list-group-item list-group-item-action mt-1";
             reportListItem.href = `company_report.html?reportName=${report.name}`;
             const sessionText = getSessionParamsText(report);
             const reportRedirect = `company_change_report.html?reportName=${report.name}`;
+            let editText = '';
+            if(report.params){
+                editText = `
+                    <a href="${reportRedirect}">
+                        <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    </a>
+                `;
+            }
             reportListItem.innerHTML = `
-                <div class="d-flex w-100 justify-content-between"><div><h4>${report.name} <span class="badge bg-primary rounded-pill"><small>${sessionText}</small></span></h4></div>
-                <a href="${reportRedirect}">
-                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                </a></div>
+                <div class="d-flex w-100 justify-content-between">
+                    <div>
+                        <h4>${report.name} 
+                            <span class="badge bg-primary rounded-pill">
+                                <small>${sessionText}</small>
+                            </span>
+                        </h4>
+                    </div>
+                    ${editText}
+                </div>
                 `;
             if(report.lastPublishDate) reportListItem.innerHTML += `
                 <p>Updated on ${fmtDate(report.lastPublishDate)} by ${report.lastUpdateMadeBy}</p>
@@ -41,10 +49,7 @@ const loadReports = async () => {
             else reportListItem.innerHTML += `
                 <p>Never Pushed</p>
             `
-            
-            contentColumn.appendChild(reportListItem);
-            itemRow.appendChild(contentColumn);
-            reportList.appendChild(itemRow); 
+            reportList.appendChild(reportListItem); 
         }
     }
     catch(error){
