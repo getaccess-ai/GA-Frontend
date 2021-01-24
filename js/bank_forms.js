@@ -10,20 +10,6 @@ if(typeof authKey !== 'undefined') {
 
 $(".page-loader").fadeOut('fast');
 
-const hexToRgb = (hex) => {
-    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-      return r + r + g + g + b + b;
-    });
-  
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
-
 if(registrationForm) {
     registrationForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -33,10 +19,7 @@ if(registrationForm) {
             bankId: data.get('bankId'),
             password: data.get('password'),
             email: data.get('email'),
-            name: data.get('name'),
-            primaryColor: hexToRgb(data.get('primaryColor')),
-            secondaryColor: hexToRgb(data.get('secondaryColor')),
-            coverImg: data.get('coverImg')
+            name: data.get('name')
         };
         axios.post(baseURL + '/bank/register', registerBody)
         .then(response => {

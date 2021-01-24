@@ -2,8 +2,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
+    position: relative;
+}
+
+.navbar.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    padding: 0.6em;
+}
+
+.footer .container {
+    text-align: center;
+}
+
+.footer p {
+    margin: 0!important;
 }
 
 h1 {
@@ -14,6 +37,12 @@ h1 {
 @media (max-width: 500px) {
     .form-wrapper {
         max-width: 300px;
+    }
+}
+
+@media (max-width: 800px) {
+    body {
+        padding-bottom: 2em;
     }
 }
 

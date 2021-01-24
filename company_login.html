@@ -21,18 +21,25 @@
         </div>
     </div>
  </div>
+ <nav class="navbar header navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="" height="36">
+    </a>
+  </div>
+</nav>
     <div class="form-wrapper">
         <h1>Customer Login</h1>
     <form id="login-form">
         <!-- CompanyId input -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="companyId">Customer Id</label>
+          <label class="form-label" for="companyId">Customer Id *</label>
           <input type="text" id="companyId" class="form-control" name="companyId" />
         </div>
       
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="password">Password</label>
+          <label class="form-label" for="password">Password *</label>
           <input type="password" id="password" class="form-control" name="password" />
         </div>
       
@@ -41,11 +48,16 @@
         <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
 
         <div class="text-center">
-          <p>Are you a Bank? <a href="bank_login.html">Login as a Bank</a> instead</p>
+          <p><a href="#">Forgot Password?</a></p>
         </div>
       
       </form>
     </div>
+    <nav class="footer navbar-dark bg-dark">
+      <div class="container">
+        <p>Made with ❤️ in India</p>
+      </div>
+    </nav>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
