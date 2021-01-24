@@ -28,9 +28,13 @@ const loadReports = async () => {
             reportListItem.className = "list-group-item list-group-item-action mt-1";
             reportListItem.href = `company_report.html?reportName=${report.name}`;
             const sessionText = getSessionParamsText(report);
+            const reportRedirect = `company_change_report.html?reportName=${report.name}`;
             reportListItem.innerHTML = `
-                <h4>${report.name} <span class="badge bg-primary rounded-pill"><small>${sessionText}</small></span></h4>
-            `;
+                <div class="d-flex w-100 justify-content-between"><div><h4>${report.name} <span class="badge bg-primary rounded-pill"><small>${sessionText}</small></span></h4></div>
+                <a href="${reportRedirect}">
+                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a></div>
+                `;
             if(report.lastPublishDate) reportListItem.innerHTML += `
                 <p>Updated on ${fmtDate(report.lastPublishDate)} by ${report.lastUpdateMadeBy}</p>
             `
@@ -40,15 +44,6 @@ const loadReports = async () => {
             
             contentColumn.appendChild(reportListItem);
             itemRow.appendChild(contentColumn);
-            const reportListActions = document.createElement('div');
-            reportListActions.className = 'col col-1 align-middle';
-            const reportRedirect = `company_change_report.html?reportName=${report.name}`;
-            reportListActions.innerHTML = `
-                <a class="list-group-item list-group-item-action mt-1" href="${reportRedirect}">
-                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                </a>                   
-            `
-            itemRow.appendChild(reportListActions);
             reportList.appendChild(itemRow); 
         }
     }
