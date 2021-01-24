@@ -48,13 +48,25 @@ const clickHandler = async (e) => {
     }
 }
 
+const getGroup = (param) => {
+    const outerDiv = document.createElement('div');
+    outerDiv.className = 'input-group mb-3';
+    const innerSpan = document.createElement('span');
+    innerSpan.className = 'input-group-text';
+    innerSpan.innerHTML = param.split('_').join(' ');
+    innerSpan.style.textTransform = 'capitalize';
+    outerDiv.appendChild(innerSpan);
+    return outerDiv;
+}
+
 const loadReport = async (e) => {
     form.innerHTML = "";
     Object.keys(report.params).forEach((param) => {
         const input = document.createElement('input');
+        const group = getGroup(param); 
         if(param.includes("date"))  input.type = "date";
         else input.type = "text";
-        input.className = "form-control mt-2";
+        input.className = "form-control";
         input.placeholder = `Enter ${param}`;
         input.autocomplete = 'off';
         const prevValue = report.params[param];
@@ -62,7 +74,8 @@ const loadReport = async (e) => {
         input.name = param;
         input.required = true;
         input.id = param;
-        form.appendChild(input);
+        group.appendChild(input);
+        form.appendChild(group);
     });
     const lineBreak = document.createElement('br');
     form.appendChild(lineBreak);
@@ -83,12 +96,14 @@ const handleLoad = async (e) => {
     name = urlParams.get('reportName');
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try{
-        const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
-        report = resp.data;
+        const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/`);
+        const reports = resp.data;
+        console.log(reports);
+        reports.reports.forEach(rep => {if(rep.name===name) report = rep;})
         loadReport();
     }
     catch(error){
-        console.log(error.response.data.error);
+        console.log(error);
         document.querySelector('.page-loader').style.visibility = 'hidden';
         const msg = error.response? error.response.data.error: "Something went wrong";
         pushFailureModal(msg);
