@@ -36,7 +36,7 @@
                 <div>
                     <button class="btn btn-outline-info" onclick="window.location.replace('company_reports.html')">Go Back</button>
                     <button class="btn btn-outline-danger" onclick="handleDelete()">Delete</button>
-                    <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#pushModal">Approve</button>
+                    <button id="approveButton" class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#pushModal">Approve</button>
                     <button class="btn btn-outline-warning" onclick="document.querySelector('.page-loader').style.visibility = 'visible';Cookies.remove('company-auth'); window.location.replace('company_login.html')">Logout</button>
                 </div>
             </div>

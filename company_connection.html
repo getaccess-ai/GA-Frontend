@@ -14,6 +14,13 @@
     <link rel="shortcut icon" href="favicon.png" type="image/png">
   </head>
 <body onload="handleLoad()" style="padding-top: 4em; padding-bottom: 4em;">
+  <div class="page-loader" style="visibility: hidden;">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
   <nav class="navbar header navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -23,7 +30,7 @@
   </nav>
     <div class="container">
         <h1>You are not connected yet!</h1>
-        <h4>Connect with one of the below</h4>
+        <h4>Connect with one of the below or <button class="btn btn-outline-warning" onclick="document.querySelector('.page-loader').style.visibility = 'visible';Cookies.remove('company-auth'); window.location.replace('company_login.html')">Logout</button></h4>
         <br>
         <div class="row">
           <div class="col-sm-6">

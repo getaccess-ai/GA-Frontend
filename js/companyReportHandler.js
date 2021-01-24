@@ -93,6 +93,10 @@ const handleLoad = async (e) => {
     try{
         const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
         report = resp.data;
+        if(report.name.split('.').includes('Tally')){
+            pushFailureModal('Tally does not support browser push, you may only see the report. To approve please go to the desktop app.');
+            document.querySelector("#approveButton").remove();
+        }
         loadReport();
     }
     catch(error){
