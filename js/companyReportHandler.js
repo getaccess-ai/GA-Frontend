@@ -1,5 +1,5 @@
 const pre = document.querySelector("pre");
-let name;
+let reportName;
 let report;
 let annotations = {};
 let curAnnotation;
@@ -40,7 +40,7 @@ function pushFailureModal(msg, err){
 async function handleDelete(){
     try {
         document.querySelector('.page-loader').style.visibility = 'visible';
-        const resp = await axios.delete(`https://z2o.herokuapp.com/company/data/reports/${name}`);
+        const resp = await axios.delete(`https://z2o.herokuapp.com/company/data/reports/${reportName}`);
         pushSuccessModal('This report has been deleted. Press ok to go to report listing.', true);
     } catch (error) {
         document.querySelector('.page-loader').style.visibility = 'hidden';
@@ -84,25 +84,27 @@ const loadReport = async () => {
     document.querySelector('.page-loader').style.visibility = 'hidden';
 };
 
-const handleLoad = async (e) => {
-    document.querySelector('.page-loader').style.visibility = 'visible';
-    if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
-    const urlParams = new URLSearchParams(window.location.search);
-    name = urlParams.get('reportName');
-    axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
+
+const fetchReport = async () => {
     try{
-        const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${name}`);
+        const resp = await axios.get(`https://z2o.herokuapp.com/company/data/reports/${reportName}`);
         report = resp.data;
-        if(report.name.split('.').includes('Tally')){
-            pushFailureModal('Tally does not support browser push, you may only see the report. To approve please go to the desktop app.');
-            document.querySelector("#approveButton").remove();
-        }
-        loadReport();
+        return true;
     }
     catch(error){
         console.log(error.response.data.error);
         document.querySelector('.page-loader').style.visibility = 'hidden';
         const msg = error.response? error.response.data.error: "Something went wrong";
         pushFailureModal(msg);
+        return false;
     }
+}
+
+const handleLoad = async (e) => {
+    document.querySelector('.page-loader').style.visibility = 'visible';
+    if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
+    const urlParams = new URLSearchParams(window.location.search);
+    reportName = urlParams.get('reportName');
+    axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
+    if(await fetchReport()) loadReport();
 };
