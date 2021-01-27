@@ -12,7 +12,7 @@ const loadReport = (report, companyName) => {
     console.log(report);
     if(report.reportName.includes('StockStatement')) {
         if(report.approvedData.data.Title) $('#report-title').text(report.approvedData.data.Title);
-        else $('#report-title').text(`Stock Statement for ${report.approvedData.data.Period}: ${companyName}`);
+        else $('#report-title').text(`Stock Statement for ${report.approvedData.data.Period}`);
     }
     const annotations = report.approvedData.annotations;
     for(const cell in annotations) {
