@@ -21,6 +21,62 @@ async function handleConnectClick(e){
     }, 500);
 }
 
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    document.querySelector('.page-loader').style.visibility = 'visible';
+    const companyReference = document.querySelector('#companyReference').value;
+    try {
+        const resp = await axios.put('https://z2o.herokuapp.com/company/connection', {companyReference});
+        location.reload();
+    }catch(error){
+        console.log(error);
+        alert('Something went wrong');
+    }
+}
+
+const loadValues = async () => {
+    try{
+        if(company.platform!=='zoho') throw {error: 'Connection type not zoho'};
+        const resp = await axios.get('https://z2o.herokuapp.com/company/data/reports/GA.Reports.Zoho.OrganizationsData');
+        const report = resp.data;
+        const selector = document.querySelector('#companyReference');
+        selector.innerHTML = "";
+        report.data.forEach(orgzn => {
+            const option = document.createElement("option");
+            option.value = orgzn.organization_id;
+            option.text = orgzn.name;
+            selector.appendChild(option);
+        });
+        document.querySelector('#submitParam').style.visibility = 'visible';
+    }
+    catch(error){
+        console.log(error);
+        alert('Something went wrong');
+    }
+}
+
+const getCompanyInfo = () => {
+    const paramName = company.platform === 'zoho'? 'Organization Id': 'Company Name';
+    const param = company.platform === 'zoho'? 'organization_id': 'company_name';
+    document.querySelector('#body-container').innerHTML = `
+    <div class="container-fluid company-content">
+        <div class="form-wrapper">
+            <h1>Specify the ${paramName}</h1>
+            <br/>
+            <form id="select-form">
+                <select class="form-select" id="companyReference">
+                    <option selected>Loading values</option>
+                </select>
+                <br>
+                <button  id="submitParam" style="visiblity:none;" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
+        </div>
+    </div>`;
+    document.querySelector('#submitParam').addEventListener('click', handleSubmit);
+    loadValues();
+}
+
 async function handleLoad() {
     if (!Cookies.get('company-auth'))
         window.location.replace("company_login.html");
@@ -30,6 +86,8 @@ async function handleLoad() {
         company = resp.data;
         if (company.status === 'connected')
             window.location.replace("company_reports.html");
+        else if(company.status == 'linked')
+            getCompanyInfo();
         else document.querySelector('div.container').style.visibility = 'visible';
     }
     catch (error) {

@@ -2,7 +2,7 @@ const body = document.querySelector("body");
 const reportSelector = document.getElementById("report-name");
 const form = document.getElementById("add-form");
 const failureModal = new bootstrap.Modal(document.getElementById('failureModal'));
-let reports;
+let reports, company;
 
 function pushFailureModal(msg, err){
     failureBody.innerText = msg;
@@ -69,6 +69,7 @@ const changeHandler = async (e) => {
     if(idx===-1) return;
     const report = reports[idx];
     report.requiredParams.forEach((param) => {
+        if(!param) return;
         const group = getGroup(param);
         const input = document.createElement('input');
         if(param.includes("date"))  input.type = "date";
@@ -126,6 +127,10 @@ const handleLoad = async (e) => {
     if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try{
+        const cresp = await axios.get('https://z2o.herokuapp.com/company/data');
+        company = cresp.data;
+        if (company.status !== 'connected')
+            window.location.replace("company_connection.html");
         const resp = await axios.get('https://z2o.herokuapp.com/company/data/reports/all');
         reports = resp.data.reports;
         loadReports();
