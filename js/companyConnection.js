@@ -10,15 +10,28 @@ sage.addEventListener('click', handleConnectClick);
 async function handleConnectClick(e){
     e.preventDefault();
     const type = e.target.id;
-    const resp = await axios.post("https://z2o.herokuapp.com/company/connection/zoho");
-    const redirectUri = resp.data.redirect_url;
-    const connectChild = window.open(redirectUri, 'ConnectWindow', 'toolbar=0,status=0,width=626,height=436');
-    const timer = setInterval(()=>{
-        if(connectChild.closed){
-            location.reload();
-            clearInterval(timer);
-        }
-    }, 500);
+    if(type==='zoho') {
+        const resp = await axios.post("https://z2o.herokuapp.com/company/connection/zoho");
+        const redirectUri = resp.data.redirect_url;
+        const connectChild = window.open(redirectUri, 'ConnectWindow', 'toolbar=0,status=0,width=626,height=436');
+        const timer = setInterval(()=>{
+            if(connectChild.closed){
+                location.reload();
+                clearInterval(timer);
+            }
+        }, 500);
+    }
+    if(type==='quickbooks') {
+        const resp = await axios.post("https://z2o.herokuapp.com/company/connection/quickbooks");
+        const redirectUri = resp.data.redirect_url;
+        const connectChild = window.open(redirectUri, 'ConnectWindow', 'toolbar=0,status=0,width=626,height=436');
+        const timer = setInterval(()=>{
+            if(connectChild.closed){
+                location.reload();
+                clearInterval(timer);
+            }
+        }, 500);
+    }
 }
 
 const handleSubmit = async (e) => {
