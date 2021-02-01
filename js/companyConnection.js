@@ -1,8 +1,8 @@
-const marg = document.getElementById('marg');
+const quickbooks = document.getElementById('quickbooks');
 const zoho = document.getElementById('zoho');
 const tally = document.getElementById('tally');
 const sage = document.getElementById('sage');
-marg.addEventListener('click', handleConnectClick);
+quickbooks.addEventListener('click', handleConnectClick);
 zoho.addEventListener('click', handleConnectClick);
 tally.addEventListener('click', handleConnectClick);
 sage.addEventListener('click', handleConnectClick);
