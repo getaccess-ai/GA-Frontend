@@ -7,6 +7,7 @@ if(typeof authKey === 'undefined') {
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
+    $(".content-loader").toggleClass("toggled");
 });
 
 $("#logoutButton").click(function(e) {

@@ -75,9 +75,13 @@ body {
   margin: -2em;
   position: fixed;
   width: 100%;
-  height: 90%;
+  height: calc(100% - 7em);
   z-index:999;
   background: white;
+}
+
+.content-loader.toggled {
+  width: calc(100% - 15rem);
 }
 
 .separator {
@@ -112,6 +116,10 @@ td td {
   }
 
   .content-loader {
-    width: 85%;
+    width: calc(100% - 15rem);
+  }
+
+  .content-loader.toggled {
+    width: 100%;
   }
 }
