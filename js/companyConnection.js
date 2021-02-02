@@ -1,11 +1,11 @@
 const quickbooks = document.getElementById('quickbooks');
 const zoho = document.getElementById('zoho');
 const tally = document.getElementById('tally');
-const sage = document.getElementById('sage');
+const xero = document.getElementById('xero');
 quickbooks.addEventListener('click', handleConnectClick);
 zoho.addEventListener('click', handleConnectClick);
 tally.addEventListener('click', handleConnectClick);
-sage.addEventListener('click', handleConnectClick);
+xero.addEventListener('click', handleConnectClick);
 
 async function handleConnectClick(e){
     e.preventDefault();
@@ -32,6 +32,17 @@ async function handleConnectClick(e){
             }
         }, 500);
     }
+    if(type==='xero') {
+        const resp = await axios.post("https://z2o.herokuapp.com/company/connection/xero");
+        const redirectUri = resp.data.redirect_url;
+        const connectChild = window.open(redirectUri, 'ConnectWindow', 'toolbar=0,status=0,width=626,height=436');
+        const timer = setInterval(()=>{
+            if(connectChild.closed){
+                location.reload();
+                clearInterval(timer);
+            }
+        }, 500);
+    }
 }
 
 const handleSubmit = async (e) => {
@@ -49,18 +60,32 @@ const handleSubmit = async (e) => {
 
 const loadValues = async () => {
     try{
-        if(company.platform!=='zoho') throw {error: 'Connection type not zoho'};
-        const resp = await axios.get('https://z2o.herokuapp.com/company/data/reports/GA.Reports.Zoho.OrganizationsData');
-        const report = resp.data;
-        const selector = document.querySelector('#companyReference');
-        selector.innerHTML = "";
-        report.data.forEach(orgzn => {
-            const option = document.createElement("option");
-            option.value = orgzn.organization_id;
-            option.text = orgzn.name;
-            selector.appendChild(option);
-        });
-        document.querySelector('#submitParam').style.visibility = 'visible';
+        if(company.platform==='zoho'){
+            const resp = await axios.get('https://z2o.herokuapp.com/company/data/reports/GA.Reports.Zoho.OrganizationsData');
+            const report = resp.data;
+            const selector = document.querySelector('#companyReference');
+            selector.innerHTML = "";
+            report.data.forEach(orgzn => {
+                const option = document.createElement("option");
+                option.value = orgzn.organization_id;
+                option.text = orgzn.name;
+                selector.appendChild(option);
+            });
+            document.querySelector('#submitParam').style.visibility = 'visible';
+        }
+        else if(company.platform==='xero'){
+            const resp = await axios.get('https://z2o.herokuapp.com/company/data/reports/GA.Reports.Xero.OrganizationsData');
+            const report = resp.data;
+            const selector = document.querySelector('#companyReference');
+            selector.innerHTML = "";
+            report.data.forEach(orgzn => {
+                const option = document.createElement("option");
+                option.value = orgzn.tenantId;
+                option.text = orgzn.tenantName;
+                selector.appendChild(option);
+            });
+            document.querySelector('#submitParam').style.visibility = 'visible';
+        }
     }
     catch(error){
         console.log(error);
