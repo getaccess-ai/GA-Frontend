@@ -1,5 +1,6 @@
 const baseURL = 'https://z2o.herokuapp.com';
-const companiesList = document.getElementById('companies-list'); 
+const companiesRegisteredList = document.getElementById('companies-registered-list');
+const companiesConnectedList = document.getElementById('companies-connected-list'); 
 
 const companyHTML = (company) => {
     const date = new Date(company.createdAt);
@@ -16,19 +17,33 @@ const loadCompanies = () => {
     axios.get(baseURL + '/bank/companies')
     .then(response => {
         console.log(response.data);
-        if(response.data.results.length===0) {
-            const noCompanies = document.createElement('p');
-            noCompanies.innerText = "You haven't added any customers yet.";
-            noCompanies.className = "text-muted";
-            companiesList.appendChild(noCompanies); 
-        }
+        let reg = 0, conn = 0;
         response.data.results.forEach(company => {
             const companyListItem = document.createElement('a');
             companyListItem.className = "list-group-item list-group-item-action";
             companyListItem.href = `bank_company.html?companyId=${company.companyId}`;
             companyListItem.innerHTML = companyHTML(company);
-            companiesList.appendChild(companyListItem); 
+            if(company.status==='registered') {
+                reg++;
+                companiesRegisteredList.appendChild(companyListItem);
+            }
+            else {
+                conn++;
+                companiesConnectedList.appendChild(companyListItem);
+            }
         });
+        if(reg===0) {
+            const noCompanies = document.createElement('p');
+            noCompanies.innerText = "Either you haven't added any customers yet, or all of them have connected their accounting softwares.";
+            noCompanies.className = "text-muted";
+            companiesRegisteredList.appendChild(noCompanies);
+        }
+        if(conn===0) {
+            const noCompanies = document.createElement('p');
+            noCompanies.innerText = "You don't have any customers who have connected their accounting softwares.";
+            noCompanies.className = "text-muted";
+            companiesConnectedList.appendChild(noCompanies);
+        }
         $(".content-loader").fadeOut('fast');
     })
     .catch(error => {
