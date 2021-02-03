@@ -22,4 +22,7 @@ for(let i=0; i<nameElements.length; i++) {
     nameElements[i].innerText = Cookies.get('name');
 }
 
+let sidebarHeading = document.getElementsByClassName('sidebar-heading bankName')[0];
+if(Cookies.get('logoUrl')) sidebarHeading.innerHTML = `<img id="logoUrl" src="${Cookies.get('logoUrl')}" width="100px"/>`;
+
 $(".page-loader").fadeOut('fast');

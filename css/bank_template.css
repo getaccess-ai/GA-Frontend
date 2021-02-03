@@ -123,3 +123,9 @@ td td {
     width: 100%;
   }
 }
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -48,6 +48,8 @@ if(loginForm) {
             console.log(response.data);
             Cookies.set('authKey', response.data.authKey);
             Cookies.set('name', response.data.data.name);
+            if(response.data.data.logoUrl) Cookies.set('logoUrl', response.data.data.logoUrl);
+            else Cookies.remove('logoUrl');
             document.location.href = 'bank_dashboard.html';
         })
         .catch(error => {
