@@ -22,6 +22,7 @@ const loadAdmin = () => {
                 email: data.get('email'),
                 name: data.get('name')
             };
+            if(data.get('logoUrl')) registerBody.logoUrl = data.get('logoUrl')
             axios.defaults.headers.common['Authorization'] = Cookies.get('adminKey');
             axios.post(baseURL + '/admin/bank/register', registerBody)
                 .then(response => {

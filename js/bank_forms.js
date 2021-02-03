@@ -21,6 +21,7 @@ if(registrationForm) {
             email: data.get('email'),
             name: data.get('name')
         };
+        if(data.get('logoUrl')) registerBody.logoUrl = data.get('logoUrl')
         axios.post(baseURL + '/bank/register', registerBody)
         .then(response => {
             console.log(response.data);
