@@ -118,6 +118,7 @@ const getCompanyInfo = () => {
 async function handleLoad() {
     if (!Cookies.get('company-auth'))
         window.location.replace("company_login.html");
+    if(Cookies.get('clogoUrl')) document.getElementsByClassName('navbar-brand h1')[0].innerHTML = `<img id="clogoUrl" src="${Cookies.get('clogoUrl')}" height="36px"/>`;
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try {
         const resp = await axios.get('https://z2o.herokuapp.com/company/data');

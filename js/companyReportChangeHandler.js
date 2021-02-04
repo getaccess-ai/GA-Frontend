@@ -92,6 +92,10 @@ const loadReport = async (e) => {
 const handleLoad = async (e) => {
     document.querySelector('.page-loader').style.visibility = 'visible';
     if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
+
+    let sidebarHeading = document.getElementsByClassName('sidebar-heading')[0];
+    if(Cookies.get('clogoUrl')) sidebarHeading.innerHTML = `<img id="clogoUrl" src="${Cookies.get('clogoUrl')}" height="36px"/>`;
+
     const urlParams = new URLSearchParams(window.location.search);
     name = urlParams.get('reportName');
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');

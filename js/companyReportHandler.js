@@ -80,7 +80,8 @@ async function approveAndPush(){
 
 const loadReport = async () => {
     $('.table-responsive').append(buildTable(report.data, annotationHandler));
-    $('span').text(report.name);
+    if(Cookies.get('clogoUrl')) $('span').html(`<div><img id="clogoUrl" src="${Cookies.get('clogoUrl')}" height="36px"/>&nbsp;&nbsp;${report.name}</div>`);
+    else $('span').text(report.name);
     document.querySelector('.page-loader').style.visibility = 'hidden';
 };
 

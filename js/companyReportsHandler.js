@@ -59,6 +59,10 @@ const loadReports = async () => {
 
 const handleLoad = async (e) => {
     if(!Cookies.get('company-auth')) window.location.replace("company_login.html");
+
+    let sidebarHeading = document.getElementsByClassName('sidebar-heading')[0];
+    if(Cookies.get('clogoUrl')) sidebarHeading.innerHTML = `<img id="clogoUrl" src="${Cookies.get('clogoUrl')}" height="36px"/>`;
+
     axios.defaults.headers.common['Authorization'] = Cookies.get('company-auth');
     try{
         const resp = await axios.get('https://z2o.herokuapp.com/company/data');

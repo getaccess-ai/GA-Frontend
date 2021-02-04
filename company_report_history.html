@@ -24,6 +24,7 @@
     
           <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1"></span>
                 <a class="navbar-brand" href="#">
                   <img src="logo-dark.png" alt="" height="36">
                 </a>
@@ -32,7 +33,7 @@
                 </form>
                 <div>
                   <button class="btn btn-outline-info" onclick="window.location.replace('company_reports.html')">Home</button>
-                <button class="btn btn-outline-danger" id="logoutButton">Logout</button>
+                <button class="btn btn-outline-danger" onclick="document.querySelector('.page-loader').style.visibility = 'visible';Cookies.remove('company-auth'); window.location.replace('company_login.html')" id="logoutButton">Logout</button>
                 </div>
                 
             </div>

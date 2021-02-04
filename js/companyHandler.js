@@ -10,6 +10,8 @@ const handleLoginSubmit = async (e) => {
     try{
         const resp = await axios.post('https://z2o.herokuapp.com/company/auth', formDataObject);
         Cookies.set('company-auth', resp.data.authKey);
+        if(resp.data.data.logoUrl) Cookies.set('clogoUrl', resp.data.data.logoUrl);
+        else Cookies.remove('clogoUrl');
         window.location.replace("company_reports.html");
     }
     catch(error){

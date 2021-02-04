@@ -44,6 +44,7 @@ const handleReport = () => {
     axios.get(baseURL + '/company'+ '/data/reports/history/' + reportName)
     .then(response => {
         reports = response.data;
+        if(Cookies.get('clogoUrl')) $('.navbar-brand.h1').html(`<img id="clogoUrl" src="${Cookies.get('clogoUrl')}" height="36px"/>`);
         if(reports.length==0){
             console.log('hi');
             document.querySelector('.content-loader').style.visibility = 'hidden';
