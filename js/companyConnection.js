@@ -137,7 +137,7 @@ const loadValues = async () => {
       books.forEach((book) => {
         const option = document.createElement("option");
         option.value = book.book_id;
-        option.text = book.book_name;
+        option.text = book.business_name;
         selector.appendChild(option);
       });
       document.querySelector("#submitParam").style.visibility = "visible";
