@@ -91,7 +91,9 @@ const handleSubmit = async (e) => {
   try {
     const resp = await axios.put(
       "https://z2o.herokuapp.com/company/connection",
-      { companyReference }
+      {
+        companyReference,
+      }
     );
     location.reload();
   } catch (error) {

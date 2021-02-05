@@ -16,6 +16,7 @@ const handleOTP = async (e) => {
     );
     alert("done!");
     window.close();
+    window.location.replace("company_reports.html");
   } catch (err) {
     console.log(err);
     alert("Something went wrong!");
@@ -50,8 +51,11 @@ async function handleLoad() {
   try {
     const resp = await axios.get("https://z2o.herokuapp.com/company/data");
     company = resp.data;
-    if (company.status === "connected") window.close();
-    else if (company.status == "linked") window.close();
+    console.log(company);
+    if (company.status === "connected" && company.platform !== "nil")
+      window.close();
+    else if (company.status === "linked")
+      window.location.replace("company_connection.html");
     else document.querySelector(".page-loader").style.visibility = "hidden";
     loginForm.onsubmit = handleSubmit;
   } catch (error) {
