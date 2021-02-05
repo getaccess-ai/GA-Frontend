@@ -45,6 +45,7 @@ function pushFailureModal(msg, err) {
         .addEventListener("click", (e) =>
           window.location.replace("company_connection_khata.html")
         );
+      document.getElementById("closeModalButton").innerText = "Authorize";
       console.log(2);
     }
   }
