@@ -75,12 +75,18 @@ const settingsHTML = (settings) => {
     `;
 };
 
+const statusToColor = (status) => {
+  if(status === 'registered') return 'secondary'
+  if(status === 'connected') return 'primary'
+  return 'info'
+}
+
 const companyHTML = (company, settings, reports) => {
   return `
             <div class="d-flex w-100 justify-content-between">
             <h1>${
               company.name
-            } &nbsp; <span class="badge bg-primary rounded-pill">${
+            } &nbsp; <span class="badge bg-${statusToColor(company.status)} rounded-pill">${
     company.status.charAt(0).toUpperCase() + company.status.slice(1)
   }</span></h1>
             <div>

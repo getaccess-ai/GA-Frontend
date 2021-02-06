@@ -6,6 +6,12 @@ const companiesConnectedList = document.getElementById(
   "companies-connected-list"
 );
 
+const statusToColor = (status) => {
+  if(status === 'registered') return 'secondary'
+  if(status === 'connected') return 'primary'
+  return 'info'
+}
+
 const companyHTML = (company) => {
   const date = new Date(company.createdAt);
   return `<div class="d-flex w-100 justify-content-between">
@@ -13,7 +19,7 @@ const companyHTML = (company) => {
             <small>${date.toDateString()}</small>
         </div>
         <small>${company.companyId}&nbsp;${company.email}&nbsp;</small>
-        <span class="badge bg-primary rounded-pill">${
+        <span class="badge bg-${statusToColor(company.status)} rounded-pill">${
           company.status.charAt(0).toUpperCase() + company.status.slice(1)
         }</span>`;
 };
