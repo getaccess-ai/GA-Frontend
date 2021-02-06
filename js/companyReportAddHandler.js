@@ -107,9 +107,7 @@ const loadReports = async () => {
   reports.forEach((report, reportIdx) => {
     const option = document.createElement("option");
     option.value = reportIdx;
-    option.innerText = report.name.split(".")[
-      report.name.split(".").length - 1
-    ];
+    option.innerText = report.name.split(".")[report.name.split(".").length - 1];
     if (report.category in optgroupmap) {
       optgroupmap[report.category].appendChild(option);
     } else {

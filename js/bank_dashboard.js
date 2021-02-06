@@ -34,7 +34,7 @@ const loadCompanies = () => {
           labels: labels,
           datasets: [
             {
-              label: "Companies Added Over Time",
+              label: "Customers Added Over Time",
               borderColor: "rgb(104,133,219)",
               data: data,
               lineTension: 0.5,

@@ -113,9 +113,9 @@ const loadReport = async () => {
     $("span").html(
       `<div><img id="clogoUrl" src="${Cookies.get(
         "clogoUrl"
-      )}" height="36px"/>&nbsp;&nbsp;${report.name}</div>`
+      )}" height="36px"/>&nbsp;&nbsp;${report.name.split(".")[report.name.split(".").length - 1]}</div>`
     );
-  else $("span").text(report.name);
+  else $("span").text(report.name.split(".")[report.name.split(".").length - 1]);
   document.querySelector(".page-loader").style.visibility = "hidden";
 };
 

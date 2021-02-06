@@ -36,7 +36,7 @@ const loadReports = async () => {
       reportListItem.innerHTML = `
                 <div class="d-flex w-100 justify-content-between">
                     <div>
-                        <h4>${report.name} 
+                        <h4>${report.name.split(".")[report.name.split(".").length - 1]} 
                             <span class="badge bg-primary rounded-pill">
                                 <small>${sessionText}</small>
                             </span>

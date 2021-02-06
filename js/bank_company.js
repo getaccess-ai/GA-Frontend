@@ -9,7 +9,7 @@ const reportsHTML = (company, reports) => {
     reportListItem.className = "list-group-item list-group-item-action";
     reportListItem.href = `bank_company_report.html?companyId=${company.companyId}&companyName=${company.name}&reportName=${report.name}`;
     reportListItem.innerHTML = `<div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">${report.name}</h5>
+                                        <h5 class="mb-1">${report.name.split(".")[report.name.split(".").length - 1]}</h5>
                                         <small>${date.toDateString()}</small>
                                     </div>
                                     <small>Submitted By: ${
