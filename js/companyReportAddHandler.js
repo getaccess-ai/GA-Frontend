@@ -56,13 +56,20 @@ const clickHandler = async (e) => {
   }
 };
 
+const namify = (param) => {
+  return param
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 const getGroup = (param) => {
   const outerDiv = document.createElement("div");
   outerDiv.className = "input-group mb-3";
   const innerDiv = document.createElement("div");
   innerDiv.className = "input-group-text";
   innerDiv.innerHTML = `
-        <label class="me-2">${param}: Default </label>
+        <label class="me-2">${namify(param)}: Default </label>
         <input class="form-check-input" name="~__${param}" type="checkbox" value="Default" aria-label="Checkbox for following text input">`;
   outerDiv.appendChild(innerDiv);
   return outerDiv;
@@ -80,7 +87,7 @@ const changeHandler = async (e) => {
     if (param.includes("date")) input.type = "date";
     else input.type = "text";
     input.className = "form-control";
-    input.placeholder = `Enter ${param}`;
+    input.placeholder = `Enter ${namify(param)}`;
     input.autocomplete = "off";
     const prevValue = localStorage.getItem(param);
     if (prevValue) input.value = prevValue;
@@ -107,7 +114,9 @@ const loadReports = async () => {
   reports.forEach((report, reportIdx) => {
     const option = document.createElement("option");
     option.value = reportIdx;
-    option.innerText = report.name.split(".")[report.name.split(".").length - 1];
+    option.innerText = report.name.split(".")[
+      report.name.split(".").length - 1
+    ];
     if (report.category in optgroupmap) {
       optgroupmap[report.category].appendChild(option);
     } else {

@@ -10,6 +10,7 @@ let company;
 
 async function handleConnectClick(e) {
   e.preventDefault();
+  document.querySelector(".page-loader").style.visibility = "visible";
   const type = e.target.id;
 
   //Zoho
@@ -81,6 +82,36 @@ async function handleConnectClick(e) {
         clearInterval(timer);
       }
     }, 500);
+  }
+  if (type === "tally") {
+    try {
+      const resp = await axios.get(`http://localhost:${port}`);
+      if (resp) {
+        const reqBody = {
+          name: "tally",
+          refreshToken: "NA",
+          accessToken: "NA",
+          endpoint: "http://localhost:9000",
+          expiryDate: Date.now(),
+        };
+        try {
+          const resp = await axios.post(
+            `https://z2o.herokuapp.com/company/connection`,
+            reqBody
+          );
+          location.reload();
+        } catch (err) {
+          console.log(err.response.data);
+          document.querySelector(".page-loader").style.visibility = "hidden";
+          alert("Something went wrong. Please try Again");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      document.querySelector(".page-loader").style.visibility = "hidden";
+      alert("Please check whether tally is acting as a server on port 9000.");
+    }
+    return;
   }
 }
 
