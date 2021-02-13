@@ -122,6 +122,11 @@ body > .row {
     width: 70vw;
 }
 
+body {
+    padding-top: 7em;
+    padding-bottom: 5em;
+}
+
 @media (min-width: 768px) {
     .col-md-8 {
         width: 33.333333333%!important;
