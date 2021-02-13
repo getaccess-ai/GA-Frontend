@@ -78,7 +78,9 @@ const handleLoad = async (e) => {
 
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");
   try {
-    const resp = await axios.get("https://z2o.herokuapp.com/company/data");
+    const resp = await axios.get(
+      "https://api-getaccess.herokuapp.com/company/data"
+    );
     company = resp.data;
     if (company.status !== "connected")
       window.location.replace("company_connection.html");

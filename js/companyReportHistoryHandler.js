@@ -1,4 +1,4 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 let reports, companyName;
 
 const loadReport = (report, companyName) => {

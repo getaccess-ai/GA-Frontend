@@ -1,11 +1,13 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 let reports, companyName;
 
 const loadReport = (report, companyName) => {
   const date = new Date(report.pushDate);
   document.querySelector(".table-responsive").innerHTML = "";
   $(".table-responsive").append(buildTable(report.approvedData.data));
-  $("#report-name").text(report.reportName.split(".")[report.reportName.split(".").length - 1]);
+  $("#report-name").text(
+    report.reportName.split(".")[report.reportName.split(".").length - 1]
+  );
   $("#company-name").text(companyName);
   $("#publish-date").text(date.toDateString());
   $("#update-name").text(report.pushedBy);

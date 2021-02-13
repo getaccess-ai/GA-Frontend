@@ -37,7 +37,7 @@ const clickHandler = async (e) => {
   const req = { name, params };
   try {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/data/reports",
+      "https://api-getaccess.herokuapp.com/company/data/reports",
       req
     );
     Object.keys(params).forEach((paramKey) => {
@@ -110,7 +110,7 @@ const handleLoad = async (e) => {
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");
   try {
     const resp = await axios.get(
-      `https://z2o.herokuapp.com/company/data/reports/`
+      `https://api-getaccess.herokuapp.com/company/data/reports/`
     );
     const reports = resp.data;
     console.log(reports);

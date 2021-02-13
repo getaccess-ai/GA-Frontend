@@ -40,7 +40,7 @@ const clickHandler = async (e) => {
   const req = { name, params };
   try {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/data/reports",
+      "https://api-getaccess.herokuapp.com/company/data/reports",
       req
     );
     Object.keys(params).forEach((paramKey) => {
@@ -149,12 +149,14 @@ const handleLoad = async (e) => {
 
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");
   try {
-    const cresp = await axios.get("https://z2o.herokuapp.com/company/data");
+    const cresp = await axios.get(
+      "https://api-getaccess.herokuapp.com/company/data"
+    );
     company = cresp.data;
     if (company.status !== "connected")
       window.location.replace("company_connection.html");
     const resp = await axios.get(
-      "https://z2o.herokuapp.com/company/data/reports/all"
+      "https://api-getaccess.herokuapp.com/company/data/reports/all"
     );
     reports = resp.data.reports;
     loadReports();

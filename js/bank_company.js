@@ -1,4 +1,4 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 
 const reportsHTML = (company, reports) => {
   const reportsList = document.createElement("div");
@@ -9,7 +9,11 @@ const reportsHTML = (company, reports) => {
     reportListItem.className = "list-group-item list-group-item-action";
     reportListItem.href = `bank_company_report.html?companyId=${company.companyId}&companyName=${company.name}&reportName=${report.name}`;
     reportListItem.innerHTML = `<div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">${report.name.split(".")[report.name.split(".").length - 1]}</h5>
+                                        <h5 class="mb-1">${
+                                          report.name.split(".")[
+                                            report.name.split(".").length - 1
+                                          ]
+                                        }</h5>
                                         <small>${date.toDateString()}</small>
                                     </div>
                                     <small>Submitted By: ${
@@ -76,17 +80,17 @@ const settingsHTML = (settings) => {
 };
 
 const statusToColor = (status) => {
-  if(status === 'registered') return 'secondary'
-  if(status === 'connected') return 'primary'
-  return 'info'
-}
+  if (status === "registered") return "secondary";
+  if (status === "connected") return "primary";
+  return "info";
+};
 
 const companyHTML = (company, settings, reports) => {
   return `
             <div class="d-flex w-100 justify-content-between">
-            <h1>${
-              company.name
-            } &nbsp; <span class="badge bg-${statusToColor(company.status)} rounded-pill">${
+            <h1>${company.name} &nbsp; <span class="badge bg-${statusToColor(
+    company.status
+  )} rounded-pill">${
     company.status.charAt(0).toUpperCase() + company.status.slice(1)
   }</span></h1>
             <div>

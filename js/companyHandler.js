@@ -9,7 +9,7 @@ const handleLoginSubmit = async (e) => {
   const formDataObject = Object.fromEntries(formData.entries());
   try {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/auth",
+      "https://api-getaccess.herokuapp.com/company/auth",
       formDataObject
     );
     Cookies.set("company-auth", resp.data.authKey);

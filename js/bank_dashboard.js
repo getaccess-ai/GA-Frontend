@@ -1,4 +1,4 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 
 const loadCompanies = () => {
   axios.defaults.headers.common["Authorization"] = Cookies.get("authKey");

@@ -7,7 +7,7 @@ const handleOTP = async (e) => {
   otp = document.getElementById("phone").value;
   try {
     const resp = await axios.post(
-      `https://z2o.herokuapp.com/company/connection/khata`,
+      `https://api-getaccess.herokuapp.com/company/connection/khata`,
       {
         phone: phoneNo,
         otp,
@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
   phoneNo = document.getElementById("phone").value;
   try {
     const resp = await axios.get(
-      `https://z2o.herokuapp.com/company/connection/khata?phone=${phoneNo}`,
+      `https://api-getaccess.herokuapp.com/company/connection/khata?phone=${phoneNo}`,
       { headers: { Authorization: Cookies.get("company-auth") } }
     );
     loginForm.onsubmit = handleOTP;
@@ -49,7 +49,9 @@ async function handleLoad() {
   if (!Cookies.get("company-auth")) window.close();
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");
   try {
-    const resp = await axios.get("https://z2o.herokuapp.com/company/data");
+    const resp = await axios.get(
+      "https://api-getaccess.herokuapp.com/company/data"
+    );
     company = resp.data;
     console.log(company);
     if (company.status === "connected" && company.platform !== "nil")

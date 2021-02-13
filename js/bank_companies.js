@@ -1,4 +1,4 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 const companiesRegisteredList = document.getElementById(
   "companies-registered-list"
 );
@@ -7,10 +7,10 @@ const companiesConnectedList = document.getElementById(
 );
 
 const statusToColor = (status) => {
-  if(status === 'registered') return 'secondary'
-  if(status === 'connected') return 'primary'
-  return 'info'
-}
+  if (status === "registered") return "secondary";
+  if (status === "connected") return "primary";
+  return "info";
+};
 
 const companyHTML = (company) => {
   const date = new Date(company.createdAt);
@@ -20,8 +20,8 @@ const companyHTML = (company) => {
         </div>
         <small>${company.companyId}&nbsp;${company.email}&nbsp;</small>
         <span class="badge bg-${statusToColor(company.status)} rounded-pill">${
-          company.status.charAt(0).toUpperCase() + company.status.slice(1)
-        }</span>`;
+    company.status.charAt(0).toUpperCase() + company.status.slice(1)
+  }</span>`;
 };
 
 const loadCompanies = () => {

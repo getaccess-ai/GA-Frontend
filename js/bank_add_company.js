@@ -1,4 +1,4 @@
-const baseURL = "https://z2o.herokuapp.com";
+const baseURL = "https://api-getaccess.herokuapp.com";
 const companyForm = document.getElementById("company-form");
 
 companyForm.addEventListener("submit", (e) => {

@@ -16,7 +16,7 @@ async function handleConnectClick(e) {
   //Zoho
   if (type === "zoho") {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/connection/zoho"
+      "https://api-getaccess.herokuapp.com/company/connection/zoho"
     );
     const redirectUri = resp.data.redirect_url;
     const connectChild = window.open(
@@ -35,7 +35,7 @@ async function handleConnectClick(e) {
   //Quickbooks
   if (type === "quickbooks") {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/connection/quickbooks"
+      "https://api-getaccess.herokuapp.com/company/connection/quickbooks"
     );
     const redirectUri = resp.data.redirect_url;
     const connectChild = window.open(
@@ -54,7 +54,7 @@ async function handleConnectClick(e) {
   //Xero
   if (type === "xero") {
     const resp = await axios.post(
-      "https://z2o.herokuapp.com/company/connection/xero"
+      "https://api-getaccess.herokuapp.com/company/connection/xero"
     );
     const redirectUri = resp.data.redirect_url;
     const connectChild = window.open(
@@ -96,7 +96,7 @@ async function handleConnectClick(e) {
         };
         try {
           const resp = await axios.post(
-            `https://z2o.herokuapp.com/company/connection`,
+            `https://api-getaccess.herokuapp.com/company/connection`,
             reqBody
           );
           location.reload();
@@ -121,7 +121,7 @@ const handleSubmit = async (e) => {
   const companyReference = document.querySelector("#companyReference").value;
   try {
     const resp = await axios.put(
-      "https://z2o.herokuapp.com/company/connection",
+      "https://api-getaccess.herokuapp.com/company/connection",
       {
         companyReference,
       }
@@ -137,7 +137,7 @@ const loadValues = async () => {
   try {
     if (company.platform === "zoho") {
       const resp = await axios.get(
-        "https://z2o.herokuapp.com/company/data/reports/GA.Reports.Zoho.OrganizationsData"
+        "https://api-getaccess.herokuapp.com/company/data/reports/GA.Reports.Zoho.OrganizationsData"
       );
       const report = resp.data;
       const selector = document.querySelector("#companyReference");
@@ -151,7 +151,7 @@ const loadValues = async () => {
       document.querySelector("#submitParam").style.visibility = "visible";
     } else if (company.platform === "xero") {
       const resp = await axios.get(
-        "https://z2o.herokuapp.com/company/data/reports/GA.Reports.Xero.OrganizationsData"
+        "https://api-getaccess.herokuapp.com/company/data/reports/GA.Reports.Xero.OrganizationsData"
       );
       const report = resp.data;
       const selector = document.querySelector("#companyReference");
@@ -218,7 +218,9 @@ async function handleLoad() {
     )}" height="36px"/>`;
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");
   try {
-    const resp = await axios.get("https://z2o.herokuapp.com/company/data");
+    const resp = await axios.get(
+      "https://api-getaccess.herokuapp.com/company/data"
+    );
     company = resp.data;
     if (company.status === "connected")
       window.location.replace("company_reports.html");

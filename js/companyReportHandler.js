@@ -56,7 +56,7 @@ async function handleDelete() {
   try {
     document.querySelector(".page-loader").style.visibility = "visible";
     const resp = await axios.delete(
-      `https://z2o.herokuapp.com/company/data/reports/${reportName}`
+      `https://api-getaccess.herokuapp.com/company/data/reports/${reportName}`
     );
     pushSuccessModal(
       "This report has been deleted. Press ok to go to report listing.",
@@ -90,7 +90,7 @@ async function approveAndPush() {
   console.log(body);
   try {
     const resp = await axios.post(
-      `https://z2o.herokuapp.com/company/data/reports/${report.name}`,
+      `https://api-getaccess.herokuapp.com/company/data/reports/${report.name}`,
       body
     );
     document.querySelector(".page-loader").style.visibility = "hidden";
@@ -125,7 +125,7 @@ const loadReport = async () => {
 const fetchReport = async () => {
   try {
     const resp = await axios.get(
-      `https://z2o.herokuapp.com/company/data/reports/${reportName}`
+      `https://api-getaccess.herokuapp.com/company/data/reports/${reportName}`
     );
     report = resp.data;
     return true;
