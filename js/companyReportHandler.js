@@ -87,6 +87,11 @@ async function approveAndPush() {
     person: document.querySelector("#person").value,
     annotations: annotations,
   };
+  if (!body.person) {
+    alert("Please put your name to push!");
+    document.querySelector(".page-loader").style.visibility = "hidden";
+    return;
+  }
   console.log(body);
   try {
     const resp = await axios.post(

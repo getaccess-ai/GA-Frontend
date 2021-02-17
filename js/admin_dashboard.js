@@ -31,6 +31,7 @@ const loadAdmin = () => {
           .post(baseURL + "/admin/bank/register", registerBody)
           .then((response) => {
             console.log(response.data);
+            alert("Bank Added!");
             document.location.href = "admin_dashboard.html";
           })
           .catch((error) => {
