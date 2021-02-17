@@ -13,8 +13,9 @@ const handleLoginSubmit = async (e) => {
       formDataObject
     );
     Cookies.set("company-auth", resp.data.authKey);
-    if (resp.data.data.logoUrl) Cookies.set("clogoUrl", resp.data.data.logoUrl);
-    else Cookies.remove("clogoUrl");
+    if (resp.data.data.logoUrl)
+      localStorage.setItem("clogoUrl", resp.data.data.logoUrl);
+    else localStorage.removeItem("clogoUrl");
     window.location.replace("company_reports.html");
   } catch (error) {
     document.querySelector(".page-loader").style.visibility = "hidden";

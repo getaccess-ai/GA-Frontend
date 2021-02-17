@@ -71,8 +71,8 @@ const handleLoad = async (e) => {
     window.location.replace("company_login.html");
 
   let sidebarHeading = document.getElementsByClassName("sidebar-heading")[0];
-  if (Cookies.get("clogoUrl"))
-    sidebarHeading.innerHTML = `<img id="clogoUrl" src="${Cookies.get(
+  if (localStorage.getItem("clogoUrl"))
+    sidebarHeading.innerHTML = `<img id="clogoUrl" src="${localStorage.getItem(
       "clogoUrl"
     )}" height="36px"/>`;
 

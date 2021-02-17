@@ -210,10 +210,10 @@ const getCompanyInfo = () => {
 async function handleLoad() {
   if (!Cookies.get("company-auth"))
     window.location.replace("company_login.html");
-  if (Cookies.get("clogoUrl"))
+  if (localStorage.getItem("clogoUrl"))
     document.getElementsByClassName(
       "navbar-brand h1"
-    )[0].innerHTML = `<img id="clogoUrl" src="${Cookies.get(
+    )[0].innerHTML = `<img id="clogoUrl" src="${localStorage.getItem(
       "clogoUrl"
     )}" height="36px"/>`;
   axios.defaults.headers.common["Authorization"] = Cookies.get("company-auth");

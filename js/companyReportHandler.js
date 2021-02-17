@@ -114,9 +114,9 @@ async function approveAndPush() {
 
 const loadReport = async () => {
   $(".table-responsive").append(buildTable(report.data, annotationHandler));
-  if (Cookies.get("clogoUrl"))
+  if (localStorage.getItem("clogoUrl"))
     $("span").html(
-      `<div><img id="clogoUrl" src="${Cookies.get(
+      `<div><img id="clogoUrl" src="${localStorage.getItem(
         "clogoUrl"
       )}" height="36px"/>&nbsp;&nbsp;${
         report.name.split(".")[report.name.split(".").length - 1]

@@ -1,7 +1,6 @@
 const baseURL = "https://api-getaccess.herokuapp.com";
 const loginForm = document.getElementById("login-form");
 const registrationForm = document.getElementById("registration-form");
-
 const authKey = Cookies.get("authKey");
 
 if (typeof authKey !== "undefined") {
@@ -52,8 +51,8 @@ if (loginForm) {
         Cookies.set("authKey", response.data.authKey);
         Cookies.set("name", response.data.data.name);
         if (response.data.data.logoUrl)
-          Cookies.set("logoUrl", response.data.data.logoUrl);
-        else Cookies.remove("logoUrl");
+          localStorage.setItem("logoUrl", response.data.data.logoUrl);
+        else localStorage.removeItem("logoUrl");
         document.location.href = "bank_dashboard.html";
       })
       .catch((error) => {
