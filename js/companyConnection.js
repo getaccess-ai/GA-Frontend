@@ -109,7 +109,7 @@ async function handleConnectClick(e) {
     } catch (error) {
       console.log(error);
       document.querySelector(".page-loader").style.visibility = "hidden";
-      alert("Please check whether tally is acting as a server on port 9000.");
+      alert("Please download our desktop app for using tally");
     }
     return;
   }
