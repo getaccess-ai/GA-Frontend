@@ -15,7 +15,6 @@ function registrationContinue() {
   const data = new FormData(registrationForm);
   const registerBody = {
     bankId: data.get("bankId"),
-    password: data.get("password"),
     email: data.get("email"),
     name: data.get("name"),
   };
