@@ -8,7 +8,8 @@ const getSessionParamsText = ({ params }) => {
   if (!params) return "Continuous";
   const { as_of_date, from_date, to_date } = params;
   let returnText = "";
-  if (as_of_date) returnText += `As of ${fmtDate(as_of_date)} `;
+  if (as_of_date || (!from_date && to_date))
+    returnText += `As of ${fmtDate(as_of_date || to_date)} `;
   if (from_date)
     returnText += `From ${fmtDate(from_date)} to ${fmtDate(to_date)}`;
   return returnText === "" ? "Continuous" : returnText;
