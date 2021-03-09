@@ -1,0 +1,106 @@
+body {
+  font-family: "Gilroy", sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 56.25px;
+  color: #160d7a;
+}
+
+.butdiv {
+  text-align: center;
+}
+
+input[type="text"],
+input[type="email"] {
+  background-color: #f5eeff;
+  border: transparent;
+}
+
+.btn-custom {
+  border-radius: 15px;
+  width: 160px;
+  height: 56.4px;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
+
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+  color: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
+  margin-bottom: 20px;
+}
+
+.btn-custom p {
+  padding: 0;
+  margin: auto;
+  font-size: 18px;
+  background: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer {
+  height: 433px;
+  background: linear-gradient(
+    93.55deg,
+    rgba(242, 11, 189, 0.15) -20.77%,
+    rgba(89, 98, 202, 0.15) 90.55%
+  );
+}
+
+.foot-container {
+  display: flex;
+  padding-top: 80px;
+}
+
+.footvec-container {
+  overflow: visible;
+  width: 104px;
+}
+.list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 20%;
+}
+.foot-lists {
+  color: #121212;
+  padding-left: 59px;
+}
+
+.foot-lists h3 {
+  font-weight: 700;
+  font-feature-settings: "liga" off;
+  font-size: 28px;
+  margin-bottom: 36px;
+}
+
+.foot-lists h4 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.44px;
+}
+
+.foot-lists ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.foot-products {
+  margin-left: 250px;
+}
+
+.bg-pink {
+  background: linear-gradient(
+    93.55deg,
+    rgba(242, 11, 189, 0.15) -20.77%,
+    rgba(89, 98, 202, 0.15) 90.55%
+  );
+}

@@ -1,91 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bank - Mass Upload Customers</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bank_template.css">
-    <link rel="stylesheet" href="css/bank_add_company.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/bank_template.css" />
+    <link rel="stylesheet" href="css/bank_add_company.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
+  </head>
+  <body>
     <div class="page-loader">
       <div class="position-absolute top-50 start-50 translate-middle">
-          <div class="spinner-border" role="status">
+        <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
-          </div>
+        </div>
       </div>
-   </div>
+    </div>
     <div class="d-flex" id="wrapper">
-
-        <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading bankName">Bank</div>
-          <div class="list-group list-group-flush">
-            <a href="bank_dashboard.html" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-            <a href="#companiesCollapse" class="list-group-item list-group-item-action bg-light" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="companiesCollapse">Customers</a>
-            <div class="collapse" id="companiesCollapse">
-                <div class="list-group list-group-flush collapseList">
-                    <a href="bank_add_company.html" class="list-group-item list-group-item-action bg-dark">Add New Customer</a>
-                    <a href="bank_companies.html" class="list-group-item list-group-item-action bg-dark">View Linked Customers</a>
-                </div>
+      <!-- Sidebar -->
+      <div class="" id="sidebar-wrapper">
+        <div class="sidebar-heading bankName">Bank</div>
+        <div class="list-group list-group-flush">
+          <a
+            href="bank_dashboard.html"
+            class="list-group-item list-group-item-action"
+            >Dashboard</a
+          >
+          <a
+            href="#companiesCollapse"
+            class="list-group-item list-group-item-action"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="companiesCollapse"
+            >Customers</a
+          >
+          <div class="collapse" id="companiesCollapse">
+            <div class="list-group list-group-flush collapseList">
+              <a
+                href="bank_add_company.html"
+                class="list-group-item list-group-item-action bg-dark"
+                >Add New Customer</a
+              >
+              <a
+                href="bank_companies.html"
+                class="list-group-item list-group-item-action bg-dark"
+                >View Linked Customers</a
+              >
             </div>
           </div>
         </div>
-        <!-- /#sidebar-wrapper -->
-    
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-    
-          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <div class="container-fluid">
-                <button class="btn btn-outline-light" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
-                <a class="navbar-brand" href="#">
-                  <img src="logo-dark.png" alt="" height="36">
-                </a>
-                <button class="btn btn-outline-danger" id="logoutButton">Logout</button>
-            </div>
-          </nav>
-    
-          <div class="container-fluid dashboard-content">
-            <h1>Mass Upload all your customers at once.</h1>
-            <h4 class='text-muted'>You can add all your customers at once by uploading a Excel file containing the details of all customers.</h4>
-            <br/><br/>
-            <h6><a href="/samples/customers.xlsx" download>Download Format and Sample XLSX File</a></h6>
-            <p class="text-muted">name, email, companyId are required fields, while companyType, region, CIF, businessLine are optional. companyId should be unique.</p>
-            <div class="form-wrapper">
-
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="companyId">Excel File (.xlsx)</label>
-                    <input type="file" id="fileInput" class="form-control" name="file" accept=".xlsx" required="required" />
-                  </div>
-
-            </div>
-            <div class="w-100 separator mt-2 shadow"></div>
-             <div class="table-responsive mt-2">
-
-            </div>
-            <button class="btn btn-success btn-lg" id="massUpload" style="visibility: hidden;">Add Customers</button>
-          </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    
       </div>
-      <nav class="footer navbar-dark bg-dark">
-        <div class="container">
-          <p>Made with ❤️ in India</p>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-light header">
+          <div class="container">
+            <button class="btn btn-outline-light" id="menu-toggle">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img src="new_logo.png" alt="" />
+            </a>
+            <button class="btn btn-outline-danger" id="logoutButton">
+              Logout
+            </button>
+          </div>
+        </nav>
+
+        <div class="container-fluid dashboard-content">
+          <h1>Mass Upload all your customers at once.</h1>
+          <h4 class="text-muted">
+            You can add all your customers at once by uploading a Excel file
+            containing the details of all customers.
+          </h4>
+          <br /><br />
+          <h6>
+            <a href="/samples/customers.xlsx" download
+              >Download Format and Sample XLSX File</a
+            >
+          </h6>
+          <p class="text-muted">
+            name, email, companyId are required fields, while companyType,
+            region, CIF, businessLine are optional. companyId should be unique.
+          </p>
+          <div class="form-wrapper">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="companyId"
+                >Excel File (.xlsx)</label
+              >
+              <input
+                type="file"
+                id="fileInput"
+                class="form-control"
+                name="file"
+                accept=".xlsx"
+                required="required"
+              />
+            </div>
+          </div>
+          <div class="w-100 separator mt-2 shadow"></div>
+          <div class="table-responsive mt-2"></div>
+          <button
+            class="btn btn-success btn-lg"
+            id="massUpload"
+            style="visibility: hidden"
+          >
+            Add Customers
+          </button>
         </div>
-      </nav>
-      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/js-xlsx@0.8.22/dist/xlsx.full.min.js"></script>
-      <script src="js/bank_template.js"></script>
-      <script src="js/json2table_custom.js"></script>
-      <script src="js/bank_mass_upload_company.js"></script>
-</body>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <nav class="footer">
+      <div class="foot-container">
+        <div class="footvec-container">
+          <img src="footvec.png" alt="" />
+        </div>
+        <div>
+          <img src="new_logo.png" alt="" />
+        </div>
+        <div class="list-grid">
+          <div class="foot-lists">
+            <h3>Products</h3>
+            <h4>Developers</h4>
+            <ul>
+              <li>GetAPI</li>
+              <li>GetCAD</li>
+              <li>GetAnalytics</li>
+            </ul>
+            <h4>Customers</h4>
+            <ul>
+              <li>GetAPI</li>
+              <li>GetCAD</li>
+              <li>GetAnalytics</li>
+            </ul>
+          </div>
+          <div class="foot-lists">
+            <h3>Use cases</h3>
+            <ul>
+              <li>Lending</li>
+              <li>Compliance</li>
+              <li>AR</li>
+              <li>AP</li>
+            </ul>
+          </div>
+          <div class="foot-lists">
+            <h3>For developers</h3>
+            <ul>
+              <li>API Docs - Developers</li>
+              <li>API Docs Benefits Integration</li>
+            </ul>
+          </div>
+          <div class="foot-lists">
+            <h3>Company</h3>
+            <ul>
+              <li>Contact Us</li>
+              <li>About</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-xlsx@0.8.22/dist/xlsx.full.min.js"></script>
+    <script src="js/bank_template.js"></script>
+    <script src="js/json2table_custom.js"></script>
+    <script src="js/bank_mass_upload_company.js"></script>
+  </body>
 </html>
