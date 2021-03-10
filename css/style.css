@@ -2,10 +2,20 @@ body {
   font-family: "Gilroy", sans-serif;
 }
 
+.page-grid {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 3fr 10fr 2fr;
+}
+
 h1 {
   font-size: 48px;
   line-height: 56.25px;
   color: #160d7a;
+}
+
+i {
+  padding: 0 5px;
 }
 
 .butdiv {
@@ -13,7 +23,8 @@ h1 {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
   background-color: #f5eeff;
   border: transparent;
 }
@@ -37,6 +48,26 @@ input[type="email"] {
   margin-bottom: 20px;
 }
 
+.btn-custom-inverted {
+  border-radius: 15px;
+  width: 160px;
+  height: 56.4px;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 0px transparent;
+  background-image: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
+
+  /* background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset; */
+  color: white;
+  margin-bottom: 20px;
+}
+
+.btn-custom-inverted p {
+  padding: 0;
+  margin: auto;
+  font-size: 18px;
+}
 .btn-custom p {
   padding: 0;
   margin: auto;
@@ -45,6 +76,18 @@ input[type="email"] {
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.small-footer {
+  background: linear-gradient(
+    93.55deg,
+    rgba(242, 11, 189, 0.15) -20.77%,
+    rgba(89, 98, 202, 0.15) 90.55%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .footer {
@@ -103,4 +146,40 @@ input[type="email"] {
     rgba(242, 11, 189, 0.15) -20.77%,
     rgba(89, 98, 202, 0.15) 90.55%
   );
+}
+
+.product-listing {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 120px;
+  align-items: center;
+}
+
+#prod-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-rows: 4fr 8fr;
+  align-items: center;
+}
+
+.prod-list-heading-area {
+  padding: 50px;
+  border-radius: 15px;
+}
+.prod-card {
+  /* border-radius: 12px;
+  border: 1px solid black; */
+  padding: 20px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
+.prod-card-heading {
+  font-size: 28px;
+  line-height: 130.8%;
+  margin-bottom: 30px;
+  background: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
