@@ -1,4 +1,9 @@
 const baseURL = "https://api-getaccess.herokuapp.com";
+let chart;
+
+const handleclick = () => {
+  console.log("hi");
+};
 
 const loadCompanies = () => {
   axios.defaults.headers.common["Authorization"] = Cookies.get("authKey");
@@ -24,62 +29,46 @@ const loadCompanies = () => {
       $("#connected-companies").text(conn);
       $("#total-reports").text(rep);
 
-      var ctx = document.getElementById("myAreaChart").getContext("2d");
-      var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: "line",
+      var ctx = document.getElementById("waterfallChart").getContext("2d");
+      // document
+      //   .getElementById("myAreaChart")
+      //   .addEventListener("click", handleclick);
 
-        // The data for our dataset
+      chart = new Chart(ctx, {
+        responsive: true,
+        maintainAspectRatio: false,
+        type: "bar",
         data: {
-          labels: labels,
+          labels: [
+            "Total Added",
+            "Not Connected",
+            "Connected",
+            "Not Active",
+            "Active",
+          ],
           datasets: [
             {
-              label: "Customers Added Over Time",
-              borderColor: "rgb(104,133,219)",
-              data: data,
-              lineTension: 0.5,
+              data: [10, [7, 10], [0, 7], [6, 7], [0, 6]],
+              backgroundColor: [
+                "#b03060",
+                "#b7446f",
+                "#bf597f",
+                "#c76e8f",
+                "#cf829f",
+              ],
+              barPercentage: 1,
             },
           ],
         },
-
-        // Configuration options go here
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          legend: {
+            display: false,
+          },
           scales: {
-            xAxes: [
-              {
-                type: "time",
-                time: {
-                  tooltipFormat: "ll HH:mm",
-                  unit: "day",
-                  unitStepSize: 1,
-                  displayFormats: {
-                    day: "MMM D YYYY",
-                  },
-                },
-                scaleLabel: {
-                  display: true,
-                  labelString: "Date",
-                },
-                gridLines: {
-                  display: false,
-                },
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 8,
-                },
-              },
-            ],
             yAxes: [
               {
-                scaleLabel: {
-                  display: true,
-                  labelString: "Companies",
-                },
                 ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 8,
+                  beginAtZero: true,
                 },
               },
             ],
@@ -87,6 +76,35 @@ const loadCompanies = () => {
         },
       });
 
+      var ctx1 = document.getElementById("periodChart").getContext("2d");
+      let chart1 = new Chart(ctx1, {
+        responsive: true,
+        maintainAspectRatio: false,
+        type: "bar",
+        data: {
+          labels: ["Sep-20", "Oct-20", "Nov-20", "Dec-20", "Jan-21", "Feb-21"],
+          datasets: [
+            {
+              data: [10, 9, 15, 8, 8, 10],
+              barPercentage: 1,
+            },
+          ],
+        },
+        options: {
+          legend: {
+            display: false,
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
       $(".content-loader").fadeOut("fast");
     })
     .catch((error) => {
