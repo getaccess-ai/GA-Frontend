@@ -24,6 +24,10 @@ i {
   padding: 0 5px;
 }
 
+.view-reports-button {
+  border-radius: 15px;
+}
+
 .butdiv {
   text-align: center;
 }
@@ -79,9 +83,16 @@ input[type="password"] {
   margin: auto;
   font-size: 18px;
   background: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.navbar-brand {
+  width: 224px;
+}
+
+.navbar-brand img {
+  width: 100%;
 }
 
 .small-footer {
@@ -91,6 +102,7 @@ input[type="password"] {
     rgba(89, 98, 202, 0.15) 90.55%
   );
   display: flex;
+  font-size: 18px;
   align-items: center;
   justify-content: center;
   text-align: center;
