@@ -84,6 +84,7 @@ input[type="password"] {
   font-size: 18px;
   background: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -208,5 +209,6 @@ input[type="password"] {
   margin-bottom: 30px;
   background: linear-gradient(93.55deg, #f20bbd -20.77%, #5962ca 90.55%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
