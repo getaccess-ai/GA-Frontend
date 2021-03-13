@@ -59,7 +59,7 @@ const handleReport = () => {
     .then((response) => {
       reports = response.data;
       if (localStorage.getItem("clogoUrl"))
-        $(".navbar-brand.h1").html(
+        $(".sidebar-heading").html(
           `<img id="clogoUrl" src="${localStorage.getItem(
             "clogoUrl"
           )}" height="36px"/>`

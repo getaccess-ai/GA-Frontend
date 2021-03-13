@@ -1,71 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NMRCK52BL3"></script>
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-NMRCK52BL3"
+    ></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag('config', 'G-NMRCK52BL3');
+      gtag("config", "G-NMRCK52BL3");
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer - Login</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/forms.css">
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/forms.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"
+      defer
+    ></script>
     <script src="js/companyHandler.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" defer></script>
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
   </head>
-<body>
-  <div class="page-loader" style="visibility: hidden;">
-    <div class="position-absolute top-50 start-50 translate-middle">
+  <body>
+    <div class="page-loader" style="visibility: hidden">
+      <div class="position-absolute top-50 start-50 translate-middle">
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
+      </div>
     </div>
- </div>
- <nav class="navbar header navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="logo.png" alt="" height="36">
-    </a>
-  </div>
-</nav>
-    <div class="form-wrapper">
-        <h1>Customer Login</h1>
-    <form id="login-form">
-        <!-- CompanyId input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="companyId">Customer Id *</label>
-          <input type="text" id="companyId" class="form-control" name="companyId" />
-        </div>
-      
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="password">Password *</label>
-          <input type="password" id="password" class="form-control" name="password" />
-        </div>
-      
-      
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
-
-        <div class="text-center">
-          <p><a href="forgot_password.html">Forgot Password?</a></p>
-        </div>
-      
-      </form>
-    </div>
-    <nav class="footer navbar-dark bg-dark">
+    <nav class="navbar header">
       <div class="container">
-        <p>Made with ❤️ in India</p>
+        <a class="navbar-brand" href="#">
+          <img src="new_logo.png" alt="" />
+        </a>
       </div>
     </nav>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-</body>
+    <div class="form-align">
+      <div class="form-wrapper">
+        <h1>Customer Login</h1>
+        <form id="login-form">
+          <!-- CompanyId input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="companyId">Customer Id *</label>
+            <input
+              type="text"
+              id="companyId"
+              class="form-control"
+              name="companyId"
+            />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password *</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              name="password"
+            />
+          </div>
+
+          <!-- Submit button -->
+          <div class="butdiv">
+            <button type="submit" class="btn-custom">
+              <p>Login</p>
+            </button>
+          </div>
+          <div class="text-center">
+            <p><a href="forgot_password.html">Forgot Password?</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer
+      class="small-footer"
+      style="position: fixed; left: 0; bottom: 0; width: 100%"
+    >
+      <div class="container">
+        Need Assistance? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Get in
+        touch!
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <i class="fa fa-phone" aria-hidden="true"></i>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

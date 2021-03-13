@@ -212,7 +212,7 @@ async function handleLoad() {
     window.location.replace("company_login.html");
   if (localStorage.getItem("clogoUrl"))
     document.getElementsByClassName(
-      "navbar-brand h1"
+      "sidebar-heading"
     )[0].innerHTML = `<img id="clogoUrl" src="${localStorage.getItem(
       "clogoUrl"
     )}" height="36px"/>`;
