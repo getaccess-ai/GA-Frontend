@@ -20,6 +20,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="js/bank_template.js" defer></script>
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
   </head>
   <body>
     <div class="page-grid">
@@ -28,7 +31,13 @@
           <a class="navbar-brand" href="#">
             <img src="new_logo.png" alt="" />
           </a>
-          <button class="btn btn-outline-danger" id="logoutButton">
+          <button
+            class="btn btn-outline-danger"
+            id="logoutButton"
+            onclick="Cookies.remove('authKey');
+            Cookies.remove('name');
+            document.location.href = 'bank_login.html';"
+          >
             Logout
           </button>
         </div>

@@ -83,12 +83,17 @@
             <a class="navbar-brand" href="#">
               <img src="new_logo.png" alt="" />
             </a>
-            <button class="btn btn-outline-danger" id="logoutButton">
-              Logout
-            </button>
+            <div>
+              <button class="btn btn-outline-primary"  style="margin-right: 5px;" id="backButton" onclick="window.location.href = 'bank_dashboard.html'">
+                Back
+              </button>
+              <button class="btn btn-outline-danger" id="logoutButton">
+                Logout
+              </button>
+            </div>
           </div>
         </nav>
-        <div class="container-fluid dashboard-content">
+        <div class="container container-fluid dashboard-content">
           <div class="content-loader">
             <div class="position-absolute top-50 start-50 translate-middle">
               <div class="spinner-border" role="status">
@@ -97,9 +102,9 @@
             </div>
           </div>
           <section id="graph-grid" class="container">
-            <div class="bg-pink prod-list-heading-area graph-grid-head">
-              <h1>Compliance Dashboard</h1>
-            </div>
+            <!-- <div class= "prod-list-heading-area graph-grid-head">
+            </div> -->
+            <h1 class="graph-grid-head" style="margin-bottom: 10px;">Compliance Dashboard</h1>
             <div class="waterfall-container graph-grid-item">
               <h4>Customer Status Breakup</h4>
               <canvas
