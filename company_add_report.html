@@ -100,17 +100,22 @@
               <img src="new_logo.png" alt="" />
             </a>
             <div>
-                <button
-                  class="btn btn-outline-primary"
-                  style="margin-right: 5px"
-                  id="backButton"
-                  onclick="history.back();return false;"
-                >
-                  Back
-                </button>
-                <button class="btn btn-outline-danger" id="logoutButton" onclick="Cookies.remove('company-auth'); window.location.replace('company_login.html')">
-                  Logout
-                </button>
+              <button
+                class="btn btn-outline-primary"
+                style="margin-right: 5px"
+                id="backButton"
+                onclick="history.back();return false;"
+              >
+                Back
+              </button>
+              <button
+                class="btn btn-outline-danger"
+                id="logoutButton"
+                onclick="Cookies.remove('company-auth'); window.location.replace('company_login.html')"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </nav>
         <div

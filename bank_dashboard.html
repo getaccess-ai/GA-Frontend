@@ -20,8 +20,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="js/bank_template.js" defer></script>
+    <script src="js/bank_dashboard.js" defer></script>
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
   </head>
   <body>
@@ -43,13 +45,18 @@
         </div>
       </nav>
       <section id="prod-list" class="container">
+        <!-- <div style="display: grid; grid-template-columns: 8fr 2fr"> -->
         <div class="bg-pink prod-list-heading-area">
-          <h1>Welcome SBI!</h1>
+          <h1 id="bankWelcome">Welcome SBI!</h1>
           <p>
             This is your GetAccess dashboard. The home to all your accounting
             wizardry
           </p>
         </div>
+        <!-- <div style="padding: 40px">
+            <img src="" alt="" id="bankLogo" style="width: 100%" />
+          </div>
+        </div> -->
         <div class="product-listing">
           <div class="prod-card">
             <h4 class="prod-card-heading">GetAPI</h4>
@@ -88,4 +95,12 @@
       </footer>
     </div>
   </body>
+  <script defer>
+    document.getElementById("bankWelcome").textContent = `Welcome ${Cookies.get(
+      "name"
+    )}`;
+    // document
+    //   .getElementById("bankLogo")
+    //   .setAttribute("src", localStorage.getItem("logoUrl"));
+  </script>
 </html>
