@@ -63,7 +63,6 @@ const loadCompanies = async () => {
   );
   console.log(resp);
   custList = resp.data;
-  renderTable(custList.Total.data);
   const total = custList["Total"].count,
     notConnected = custList["NotConnected"].count,
     connected = custList["Connected"].count,
@@ -146,6 +145,10 @@ const loadCompanies = async () => {
       },
     },
   });
+  document.querySelector("#tbl-cntnr").style["min-height"] = 0;
+  document.querySelector("#tbl-cntnr").style["height"] = "540px";
+  document.querySelector("#tbl-cntnr").style.overflow = "auto";
+  renderTable(custList.Total.data);
   $(".content-loader").fadeOut("fast");
 };
 
