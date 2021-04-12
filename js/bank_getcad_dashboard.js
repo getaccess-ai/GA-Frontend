@@ -58,10 +58,9 @@ const loadCompanies = async () => {
     .getElementById("waterfallChart")
     .addEventListener("click", handleclick);
 
-  const resp = await axios.get(
+  let resp = await axios.get(
     "https://api-getaccess.herokuapp.com/bank/aggregations/companyBreakup"
   );
-  console.log(resp);
   custList = resp.data;
   const total = custList["Total"].count,
     notConnected = custList["NotConnected"].count,
@@ -117,15 +116,21 @@ const loadCompanies = async () => {
   });
 
   let ctx1 = document.getElementById("periodChart").getContext("2d");
+  resp = await axios.get(
+    "https://api-getaccess.herokuapp.com/bank/aggregations/companyDistribution"
+  );
+  const mnths = Object.keys(resp.data);
+  const nums = Object.values(resp.data);
+  console.log(mnths, nums);
   let chart1 = new Chart(ctx1, {
     responsive: true,
     maintainAspectRatio: false,
     type: "bar",
     data: {
-      labels: ["Sep-20", "Oct-20", "Nov-20", "Dec-20", "Jan-21", "Feb-21"],
+      labels: mnths,
       datasets: [
         {
-          data: [10, 9, 15, 8, 8, 10],
+          data: nums,
           barPercentage: 1,
         },
       ],
