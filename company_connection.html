@@ -28,6 +28,12 @@
       src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"
       defer
     ></script>
+    <style>
+      .center {
+        text-align: center;
+        align-items: center;
+      }
+    </style>
     <script src="js/companyConnection.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
@@ -42,6 +48,48 @@
       <div class="position-absolute top-50 start-50 translate-middle">
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Download GetAccess Desktop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Download getAccess desktop app to connect with your Tally
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="window.location.href='https://drive.google.com/file/d/1FLLRRqmc6-l42UlOJqD4bDL8yIGu64sM/view?usp=sharing'"
+            >
+              Download
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -70,87 +118,254 @@
       </h4>
       <br />
       <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
+        <div class="col-sm-4">
+          <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">Zoho Books</h5>
-              <center><img src="img/zoho-logo.png" /></center>
+              <div class="center" style="height: 100px">
+                <img src="img/zoho-logo.png" />
+              </div>
               <p class="card-text">
-                Zoho Books is online accounting software that manages your
-                finances, keeps you GST compliant, automates business workflows,
-                and helps you work collectively across departments.
+                Click on connect and getAccess to your ZohoBooks account.
               </p>
-              <a href="#" id="zoho" class="btn btn-primary">Connect</a>
+              <div class="center">
+                <a href="#" id="zoho" class="btn btn-primary">Connect</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body h-100">
               <h5 class="card-title">Quickbooks</h5>
-              <center><img src="img/quickbooks-logo.png" /></center>
+              <div class="center" style="height: 100px">
+                <img src="img/quickbooks-logo.png" />
+              </div>
               <p class="card-text">
-                QuickBooks is an accounting software package geared mainly
-                towards small and medium-sized businesses and offers accounting
-                solutions that accept business payments, manage and pay bills,
-                and payroll functions.
+                Click on connect and getAccess to your QuickBooks account.
               </p>
-              <a href="#" id="quickbooks" class="btn btn-primary">Connect</a>
+              <div class="center">
+                <a href="#" id="quickbooks" class="btn btn-primary">Connect</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">KhataBook</h5>
+              <div class="center" style="height: 100px">
+                <img src="img/khatabook-logo.png" />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your KhataBook account.
+              </p>
+              <div class="center">
+                <a href="#" id="khata" class="btn btn-primary">Connect</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <br />
       <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">KhataBook</h5>
-              <center><img src="img/khatabook-logo.png" /></center>
-              <p class="card-text">
-                Digital India's Digital Khata <br />
-                Manage your Business & Personal ledgers on your phone and
-                computer. Tech-ifying kiranas: KhataBook is changing the way
-                groceries work in India. Use KhataBook and grow your business!
-              </p>
-              <a href="#" id="khata" class="btn btn-primary">Connect</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
+        <div class="col-sm-4">
+          <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">Tally</h5>
-              <center><img src="img/tally-logo.png" /></center>
+              <div class="center" style="height: 100px">
+                <img src="img/tally-logo.png" />
+              </div>
               <p class="card-text">
-                At Tally, we believe in the power of technology to make business
-                owners efficient, empowered and happier, so they can focus on
-                what matters most for their business. We design our products to
-                focus on just that – to make our products work for you.
+                Click on connect and getAccess to your Tally account.
               </p>
-              <a href="#" id="tally" class="btn btn-primary">Connect</a>
+              <div class="center">
+                <a
+                  href="#"
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  >Connect</a
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
+        <div class="col-sm-4">
+          <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">Xero</h5>
-              <center><img src="img/xero-logo.png" alt="" /></center>
+              <div class="center" style="height: 100px">
+                <img src="img/xero-logo.png" alt="" />
+              </div>
               <p class="card-text">
-                Xero is a New Zealand domiciled public technology company,
-                listed on the Australian Securities Exchange. Xero is a
-                cloud-based accounting software platform for small and
-                medium-sized businesses. Xero is one of the most innovative
-                cloud-based accounting packages on the market.
+                Click on connect and getAccess to your Xero account.
               </p>
-              <a href="#" class="btn btn-primary" id="xero">Connect</a>
+              <div class="center">
+                <a href="#" class="btn btn-primary" id="xero">Connect</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Tally Prime</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 80%; width: auto"
+                  src="img/tally-prime-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Tally Prime account.
+              </p>
+              <div class="center">
+                <a
+                  href="https://tallysolutions.com/tally-prime/"
+                  class="btn btn-primary"
+                  >Connect</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Marg</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 80%; width: auto"
+                  src="img/marg-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Marg account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Vyapar</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 50%; width: auto"
+                  src="img/vyapar-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Vyapar account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Busy</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 80%; width: auto"
+                  src="img/busy-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Busy account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Saral</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 80%; width: auto"
+                  src="img/saral-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Saral account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Ok Credit</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 50%; width: auto"
+                  src="img/ok-credit-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your Ok credit account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">FreshBooks</h5>
+              <div class="center" style="height: 100px">
+                <img
+                  style="height: 80%; width: auto"
+                  src="img/freshbooks-logo.png"
+                  alt=""
+                />
+              </div>
+              <p class="card-text">
+                Click on connect and getAccess to your FreshBooks account.
+              </p>
+              <div class="center">
+                <a href="#" class="btn btn-secondary">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <h4>
+        Didn't find your accounting software? Click here to let us know
+        <a href="mailto:contact@getaccess.ai" class="btn btn-sm btn-primary"
+          ><i class="fa fa-envelope" aria-hidden="true"></i
+        ></a>
+      </h4>
     </div>
     <footer
       class="small-footer"

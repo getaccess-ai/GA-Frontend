@@ -1,12 +1,12 @@
 const quickbooks = document.getElementById("quickbooks");
 const zoho = document.getElementById("zoho");
-const tally = document.getElementById("tally");
+// const tally = document.getElementById("tally");
 const khata = document.getElementById("khata");
 const xero = document.getElementById("xero");
 xero.addEventListener("click", handleConnectClick);
 quickbooks.addEventListener("click", handleConnectClick);
 zoho.addEventListener("click", handleConnectClick);
-tally.addEventListener("click", handleConnectClick);
+// tally.addEventListener("click", handleConnectClick);
 khata.addEventListener("click", handleConnectClick);
 let company;
 
